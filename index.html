@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>proasc | Automatizaciones con IA y WhatsApp</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="proasc (Automation System Company) desarrolla sistemas de IA conversacional, canales de venta y soporte por WhatsApp e integraciones personalizadas para automatizar tus flujos de trabajo.">
+  <meta name="keywords" content="automatizacion de whatsapp, chatbots de ia, empresa de sistemas de automatizacion, asc, automatizacion de procesos, crm integracion, inteligencia artificial">
+  <meta name="author" content="ASC">
+  
+  <!-- OpenGraph Meta Tags -->
+  <meta property="og:title" content="proasc | IA Conversacional Inteligente y Automatización de Procesos">
+  <meta property="og:description" content="Olvídate de las tareas manuales repetitivas. proasc diseña flujos personalizados en WhatsApp e integraciones de backend para optimizar tus operaciones 24/7.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://proasc.co">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Background Glow & Grid Effects -->
+  <div class="background-layer">
+    <div class="radial-glow-1"></div>
+    <div class="radial-glow-2"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header id="main-header">
+    <div class="container nav-container">
+      <a href="#hero" class="logo" id="logo-brand">
+        <img src="logo.png" alt="Logo de ASC Automations" class="logo-img">
+        <span class="logo-text">proasc</span>
+      </a>
+      
+      <ul class="nav-menu" id="navigation-menu">
+        <li><a href="#hero" class="nav-link">Inicio</a></li>
+        <li><a href="#whatsapp-demo" class="nav-link">Demo Chatbot</a></li>
+        <li><a href="#services" class="nav-link">Servicios</a></li>
+        <li><a href="#workflow" class="nav-link">Nuestro Flujo</a></li>
+        <li><a href="#about" class="nav-link">Sobre ASC</a></li>
+        <li><a href="#contact" class="nav-link">Contacto</a></li>
+      </ul>
+      
+      <a href="#contact" class="nav-cta" id="nav-cta-btn">Crear Mi Sistema</a>
+      
+      <button class="mobile-nav-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <canvas id="neural-particles" class="hero-canvas"></canvas>
+    <div class="container hero-grid">
+      <div class="hero-content reveal">
+        <div class="badge-new">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Operaciones con IA
+        </div>
+        <h1 class="hero-title">
+          Automatiza Conversaciones.<br>
+          <span class="gradient-text">Escala tu Éxito.</span>
+        </h1>
+        <p class="hero-desc">
+          proasc (Automation System Company) diseña y desarrolla modelos de IA conversacional, canales de marketing por WhatsApp e integraciones a medida para que tu negocio funcione en piloto automático.
+        </p>
+        <div class="hero-buttons">
+          <a href="#whatsapp-demo" class="btn btn-primary" id="hero-btn-demo">
+            Probar Chatbot en Vivo <i class="fa-solid fa-comments"></i>
+          </a>
+          <a href="#contact" class="btn btn-secondary" id="hero-btn-contact">
+            Solicitar Propuesta <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Interactive dashboard mockup on the right side of hero -->
+      <div class="glass-card hero-dashboard reveal" style="animation-delay: 0.2s;" id="hero-card-stats">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+          <h3 style="font-size: 1.1rem; color: #fff;">Estado Operativo</h3>
+          <span style="font-size: 0.75rem; color: var(--whatsapp); background: rgba(0, 245, 160, 0.1); padding: 0.25rem 0.75rem; border-radius: 9999px; font-weight: 600; display: inline-flex; align-items: center; gap: 0.25rem;">
+            <span style="width: 6px; height: 6px; background: var(--whatsapp); border-radius: 50%; display: inline-block;"></span> Sistemas Activos
+          </span>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.5rem;">
+              <span style="color: var(--text-muted);">Conversaciones Automatizadas</span>
+              <span style="color: var(--primary); font-weight: 700;">184.209</span>
+            </div>
+            <div style="height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden;">
+              <div style="width: 82%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); border-radius: 3px;"></div>
+            </div>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); padding: 1rem; border-radius: 12px;">
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem;">Precisión de Respuestas</div>
+              <div style="font-size: 1.4rem; font-weight: 700; color: #fff;">99.4%</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); padding: 1rem; border-radius: 12px;">
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem;">Horas Ahorradas / Mes</div>
+              <div style="font-size: 1.4rem; font-weight: 700; color: #fff;">340+</div>
+            </div>
+          </div>
+          
+          <div style="padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); display: flex; gap: 0.75rem; align-items: center;">
+            <i class="fa-solid fa-bolt" style="color: var(--primary);"></i>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Motor de IA integrado con la API de WhatsApp Business Cloud.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WhatsApp Chatbot Simulator Section -->
+  <section id="whatsapp-demo">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-subtitle">Experiencia en Vivo</span>
+        <h2 class="section-title">Prueba el Asistente de IA por WhatsApp</h2>
+        <p class="section-desc">Interactúa directamente con nuestro chatbot demo para ver cómo nuestros flujos en lenguaje natural consultan bases de datos, califican prospectos y agendan reuniones.</p>
+      </div>
+      
+      <div class="whatsapp-grid">
+        <div class="simulator-info reveal">
+          <h3 style="font-size: 1.8rem; line-height: 1.3;"><span class="gradient-text-green">Flujos de Chat Dinámicos</span> que Capturan y Convierten</h3>
+          <p style="color: var(--text-muted);">Nuestros agentes conversacionales van más allá de los botones estándar. Creamos automatizaciones contextuales y semánticas que recuerdan información, ejecutan eventos de backend y responden instantáneamente.</p>
+          
+          <div class="feature-pill-list">
+            <div class="feature-pill">
+              <i class="fa-solid fa-bolt"></i>
+              <div>
+                <h4>Respuestas en Subsegundos</h4>
+                <p>Asegura la atención de tus clientes con una infraestructura de API optimizada en la nube.</p>
+              </div>
+            </div>
+            
+            <div class="feature-pill">
+              <i class="fa-solid fa-code-merge"></i>
+              <div>
+                <h4>Sincronización Completa</h4>
+                <p>Escribe y lee información directamente en HubSpot, Salesforce, Stripe y bases de datos MySQL o PostgreSQL.</p>
+              </div>
+            </div>
+            
+            <div class="feature-pill">
+              <i class="fa-solid fa-user-shield"></i>
+              <div>
+                <h4>Traspaso Inteligente a Humanos</h4>
+                <p>Transfiere clientes a agentes humanos de soporte al instante cuando el bot detecte solicitudes complejas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Phone simulator -->
+        <div class="phone-mockup reveal" id="wa-phone-container">
+          <div class="phone-notch">
+            <div class="phone-camera"></div>
+          </div>
+          
+          <div class="wa-header">
+            <div class="wa-user">
+              <div class="wa-avatar">
+                <img src="logo.png" alt="Logo de ASC">
+              </div>
+              <div class="wa-user-details">
+                <h5>Asistente proasc</h5>
+                <span>En línea / Bot de IA</span>
+              </div>
+            </div>
+            <div class="wa-actions">
+              <i class="fa-solid fa-phone" title="Llamar"></i>
+              <i class="fa-solid fa-video" title="Videollamada"></i>
+              <i class="fa-solid fa-ellipsis-vertical" title="Opciones"></i>
+            </div>
+          </div>
+          
+          <!-- Chat Messages Body -->
+          <div class="wa-chat-body" id="wa-chat-box">
+            <div class="wa-msg wa-msg-in">
+              ¡Hola! Te damos la bienvenida a proasc (Automation System Company) 👋. Soy la IA encargada de atender este chat.
+              <span class="wa-time">14:00</span>
+            </div>
+            <div class="wa-msg wa-msg-in">
+              ¿Cómo puedo ayudarte a automatizar tu negocio hoy? ¡Selecciona un botón de abajo para probarme!
+              <span class="wa-time">14:00</span>
+            </div>
+            
+            <!-- Typing bubble (hidden initially) -->
+            <div class="wa-typing" id="wa-typing-bubble">
+              <div class="wa-dot"></div>
+              <div class="wa-dot"></div>
+              <div class="wa-dot"></div>
+            </div>
+          </div>
+          
+          <!-- Presets Options Panel -->
+          <div class="wa-options-panel">
+            <div class="wa-options-title">Selecciona una Pregunta</div>
+            <div class="wa-presets" id="wa-presets-box">
+              <button class="wa-preset-btn" data-key="help">🚀 ¿Cómo funciona?</button>
+              <button class="wa-preset-btn" data-key="whatsapp">💬 Funciones de WhatsApp</button>
+              <button class="wa-preset-btn" data-key="custom">⚙️ Sistemas a Medida</button>
+              <button class="wa-preset-btn" data-key="pricing">💰 Precios de Proyectos</button>
+            </div>
+          </div>
+          
+          <div class="wa-footer">
+            <input type="text" class="wa-input" placeholder="Elige un botón de arriba..." id="wa-text-input" disabled>
+            <button class="wa-send-btn" id="wa-send-btn-mock">
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid Section -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-subtitle">Qué Diseñamos</span>
+        <h2 class="section-title">Arquitecturas de Automatización Integrales</h2>
+        <p class="section-desc">Diseñamos y desarrollamos integraciones de software fluidas para que tu equipo se concentre en escalar ventas, eliminando tareas manuales repetitivas.</p>
+      </div>
+      
+      <div class="services-grid">
+        <!-- Card 1 -->
+        <div class="glass-card service-card reveal" id="service-card-whatsapp">
+          <div class="service-icon">
+            <i class="fa-brands fa-whatsapp"></i>
+          </div>
+          <h3 class="service-title">Sistemas para WhatsApp</h3>
+          <p class="service-desc">Transforma tu línea comercial de WhatsApp en un canal de ventas, atención al cliente y soporte automatizado las 24 horas.</p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> Árboles lógicos y flujos semánticos</li>
+            <li><i class="fa-solid fa-check"></i> Campañas masivas de WhatsApp (API Cloud)</li>
+            <li><i class="fa-solid fa-check"></i> Agendamiento de reuniones dentro del chat</li>
+            <li><i class="fa-solid fa-check"></i> Generación automática de links de cobro</li>
+          </ul>
+        </div>
+        
+        <!-- Card 2 -->
+        <div class="glass-card service-card reveal" style="animation-delay: 0.1s;" id="service-card-ai">
+          <div class="service-icon">
+            <i class="fa-solid fa-brain"></i>
+          </div>
+          <h3 class="service-title">Integraciones de IA Conversacional</h3>
+          <p class="service-desc">Aprovecha modelos LLM, bases de datos vectoriales y arquitecturas cognitivas para brindar soporte específico con el contexto de tu empresa.</p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> Asistentes de IA entrenados con tus documentos</li>
+            <li><i class="fa-solid fa-check"></i> Memoria contextual e histórico de chats</li>
+            <li><i class="fa-solid fa-check"></i> Extracción de datos y guardado automático</li>
+            <li><i class="fa-solid fa-check"></i> Calificación e intenciones de clientes</li>
+          </ul>
+        </div>
+        
+        <!-- Card 3 -->
+        <div class="glass-card service-card reveal" style="animation-delay: 0.2s;" id="service-card-custom">
+          <div class="service-icon">
+            <i class="fa-solid fa-gears"></i>
+          </div>
+          <h3 class="service-title">Flujos e Integración de Backend</h3>
+          <p class="service-desc">Conectamos bases de datos, CRMs, planillas, pasarelas de pago y APIs. Reemplazamos horas de copiar y pegar por sincronizaciones instantáneas.</p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> Tuberías de datos con HubSpot / Salesforce</li>
+            <li><i class="fa-solid fa-check"></i> Conexiones de API y Webhooks a medida</li>
+            <li><i class="fa-solid fa-check"></i> Automatización de reportes e informes</li>
+            <li><i class="fa-solid fa-check"></i> Extracción automática de datos (web scraping)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Workflow Visualizer Section -->
+  <section id="workflow">
+    <div class="container workflow-container">
+      <div class="workflow-info reveal">
+        <span class="section-subtitle">Operaciones en Tiempo Real</span>
+        <h2 class="section-title">Mira los Datos Moverse al Instante</h2>
+        <p class="section-desc">Cada acción dentro del ecosistema de proasc forma parte de una cadena conectada. Cuando un cliente realiza una consulta, nuestros sistemas de backend actualizan tus herramientas digitales de forma instantánea.</p>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Observa la simulación de la derecha para ver cómo viajan los datos desde un mensaje entrante de WhatsApp hasta el CRM y la alerta automatizada por correo.</p>
+        
+        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+          <button class="btn btn-primary" id="btn-trigger-workflow">
+            Iniciar Demostración de Flujo <i class="fa-solid fa-play"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Visualizer svg board -->
+      <div class="visualizer-board reveal" id="workflow-visualizer-box">
+        <svg class="svg-connections" id="workflow-connections-svg">
+          <defs>
+            <linearGradient id="cyan-purple-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#00f2fe" />
+              <stop offset="100%" stop-color="#9b51e0" />
+            </linearGradient>
+          </defs>
+          <!-- Curved connections -->
+          <path id="path-1-2" class="connection-line" d="M 120 200 Q 210 120 300 200" fill="none" />
+          <path id="pulse-1-2" class="pulse-line" d="M 120 200 Q 210 120 300 200" fill="none" />
+          
+          <path id="path-2-3" class="connection-line" d="M 380 200 Q 470 120 560 200" fill="none" />
+          <path id="pulse-2-3" class="pulse-line" d="M 380 200 Q 470 120 560 200" fill="none" />
+          
+          <path id="path-3-4" class="connection-line" d="M 380 200 Q 470 280 560 200" fill="none" />
+          <path id="pulse-3-4" class="pulse-line" d="M 380 200 Q 470 280 560 200" fill="none" />
+        </svg>
+        
+        <!-- Node 1: WhatsApp Trigger -->
+        <div class="flow-node" id="node-wa" style="position: absolute; left: 40px; top: 160px;">
+          <i class="fa-brands fa-whatsapp"></i>
+          <div class="flow-node-label">1. Entrada WhatsApp</div>
+        </div>
+        
+        <!-- Node 2: AI Processor -->
+        <div class="flow-node" id="node-ai" style="position: absolute; left: 300px; top: 160px;">
+          <i class="fa-solid fa-brain"></i>
+          <div class="flow-node-label">2. Lógica de IA</div>
+        </div>
+        
+        <!-- Node 3: CRM DB Logger -->
+        <div class="flow-node" id="node-db" style="position: absolute; left: 560px; top: 70px;">
+          <i class="fa-solid fa-database"></i>
+          <div class="flow-node-label">3. Sincronización CRM</div>
+        </div>
+        
+        <!-- Node 4: Calendar / Mail -->
+        <div class="flow-node" id="node-mail" style="position: absolute; left: 560px; top: 250px;">
+          <i class="fa-solid fa-envelope-open-text"></i>
+          <div class="flow-node-label">4. Correo Automático</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About ASC Section -->
+  <section id="about">
+    <div class="container about-grid">
+      <div class="about-stats reveal">
+        <div class="stat-box">
+          <div class="stat-num gradient-text">95%</div>
+          <div class="stat-label">Horas Ahorradas</div>
+        </div>
+        
+        <div class="stat-box" style="margin-top: 1.5rem;">
+          <div class="stat-num gradient-text">24/7</div>
+          <div class="stat-label">Captura de Leads</div>
+        </div>
+        
+        <div class="stat-box">
+          <div class="stat-num gradient-text">4.5x</div>
+          <div class="stat-label">Velocidad Respuesta</div>
+        </div>
+        
+        <div class="stat-box" style="margin-top: 1.5rem;">
+          <div class="stat-num gradient-text">100%</div>
+          <div class="stat-label">Hecho a Medida</div>
+        </div>
+      </div>
+      
+      <div class="about-info reveal">
+        <span class="section-subtitle">Quiénes Somos</span>
+        <h2 class="section-title">Somos ASC (Automation System Company)</h2>
+        <p class="section-desc">Operando comercialmente como **proasc**, somos un equipo de ingenieros en sistemas y arquitectos de IA. Nuestro objetivo es directo: erradicar las tareas manuales que absorben el tiempo de tu equipo y dan lugar a errores operativos.</p>
+        <p style="color: var(--text-muted); margin-bottom: 1rem;">Desde flujos sencillos de auto-respuesta en WhatsApp hasta integraciones complejas de API que conectan tus bases de datos heredadas con herramientas en la nube, en ASC estructuramos e instalamos la columna vertebral digital de tu negocio.</p>
+        <a href="#contact" class="btn btn-secondary" id="about-btn-learn">Agendar Consultoría</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Consultation Form Section -->
+  <section id="contact">
+    <div class="container contact-grid">
+      <div class="contact-info reveal">
+        <div>
+          <span class="section-subtitle">Comienza Hoy</span>
+          <h2 class="section-title" style="margin-bottom: 1.5rem;">Diseñemos tu Plan de Automatización</h2>
+          <p class="section-desc" style="max-width: 400px; margin-bottom: 2rem;">¿Listo para liberar horas de trabajo operativo? Cuéntanos dónde están tus cuellos de botella y diseñaremos una propuesta técnica a medida.</p>
+        </div>
+        
+        <div class="contact-card-container">
+          <a href="mailto:ventas@proasc.com" class="contact-item" id="contact-link-email">
+            <div class="contact-icon">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h5>Escríbenos por Email</h5>
+              <p>ventas@proasc.com</p>
+            </div>
+          </a>
+          
+          <a href="https://wa.me/5493442490633" target="_blank" class="contact-item" id="contact-link-whatsapp">
+            <div class="contact-icon">
+              <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <div class="contact-details">
+              <h5>Escríbenos por WhatsApp</h5>
+              <p>+54 9 3442 49-0633</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Contact Form Box -->
+      <div class="glass-card reveal" id="contact-form-card">
+        <form class="contact-form" id="main-contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact-name" class="form-label">Nombre Completo</label>
+              <input type="text" id="contact-name" class="form-input" placeholder="Juan Pérez" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-company" class="form-label">Nombre de Empresa</label>
+              <input type="text" id="contact-company" class="form-input" placeholder="Mi Empresa S.A.">
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact-email" class="form-label">Correo Corporativo</label>
+              <input type="email" id="contact-email" class="form-input" placeholder="juan@miempresa.com" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-phone" class="form-label">Número de WhatsApp</label>
+              <input type="tel" id="contact-phone" class="form-input" placeholder="+54 9 3442 490633" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="contact-bot-type" class="form-label">¿Qué necesitas automatizar?</label>
+            <select id="contact-bot-type" class="form-input" style="background-color: #0b0f19;">
+              <option value="whatsapp">Automatización de Conversaciones por WhatsApp</option>
+              <option value="ai-agent">Chatbots de IA con Base de Conocimientos</option>
+              <option value="workflow">Integraciones de Backend y Conexión de APIs</option>
+              <option value="all">Transformación Digital e Integraciones de Sistemas</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="contact-message" class="form-label">Describe tus cuellos de botella actuales</label>
+            <textarea id="contact-message" class="form-input" placeholder="Ej: Dedicamos 3 horas al día copiando los datos de clientes al CRM y agendando llamadas a mano..." required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" id="btn-submit-form" style="width: 100%; justify-content: center;">
+            Enviar Solicitud de Plan de Automatización <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notification Toast -->
+  <div class="form-toast" id="toast-notification">
+    <i class="fa-solid fa-circle-check"></i>
+    <div>
+      <h5 style="font-weight: 700;">¡Solicitud Enviada!</h5>
+      <p style="font-size: 0.8rem; color: var(--text-muted);">Te enviaremos un WhatsApp en breve.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="logo" style="margin-bottom: 0.5rem;" id="footer-logo">
+          <img src="logo.png" alt="Logo de ASC Automations" class="logo-img">
+          <span class="logo-text">proasc</span>
+        </a>
+        <p>ASC (Automation System Company) se especializa en asistentes conversacionales de IA, automatización para WhatsApp de empresas e integraciones de backend.</p>
+      </div>
+      
+      <div class="footer-links-col">
+        <h4>Navegación</h4>
+        <ul class="footer-links">
+          <li><a href="#hero">Inicio</a></li>
+          <li><a href="#whatsapp-demo">Demo Chatbot</a></li>
+          <li><a href="#services">Servicios</a></li>
+          <li><a href="#workflow">Nuestro Flujo</a></li>
+          <li><a href="#about">Sobre ASC</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-newsletter">
+        <h4>Novedades</h4>
+        <p>Suscríbete para recibir plantillas de automatización y consejos de IA quincenales directamente en tu correo.</p>
+        <form class="newsletter-form" id="subscribe-newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="correo@empresa.com" required id="newsletter-email-input">
+          <button type="submit" class="btn btn-primary btn-newsletter" id="newsletter-submit-btn">
+            Unirse
+          </button>
+        </form>
+      </div>
+    </div>
+    
+    <div class="container footer-bottom">
+      <p>&copy; 2026 ASC (Automation System Company). Todos los derechos reservados.</p>
+      <div class="social-links">
+        <a href="https://linkedin.com" target="_blank" class="social-link" id="social-lnk-linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://twitter.com" target="_blank" class="social-link" id="social-lnk-twitter"><i class="fa-brands fa-twitter"></i></a>
+        <a href="https://github.com" target="_blank" class="social-link" id="social-lnk-github"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
