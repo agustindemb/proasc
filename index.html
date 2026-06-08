@@ -300,48 +300,50 @@
         </div>
       </div>
       
-      <!-- Visualizer svg board -->
-      <div class="visualizer-board reveal" id="workflow-visualizer-box">
-        <svg class="svg-connections" id="workflow-connections-svg">
-          <defs>
-            <linearGradient id="cyan-purple-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#00f2fe" />
-              <stop offset="100%" stop-color="#9b51e0" />
-            </linearGradient>
-          </defs>
-          <!-- Curved connections -->
-          <path id="path-1-2" class="connection-line" d="M 120 200 Q 210 120 300 200" fill="none" />
-          <path id="pulse-1-2" class="pulse-line" d="M 120 200 Q 210 120 300 200" fill="none" />
+      <!-- Visualizer svg board wrapper for responsive scaling -->
+      <div class="visualizer-wrapper">
+        <div class="visualizer-board reveal" id="workflow-visualizer-box">
+          <svg class="svg-connections" id="workflow-connections-svg">
+            <defs>
+              <linearGradient id="cyan-purple-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#00f2fe" />
+                <stop offset="100%" stop-color="#9b51e0" />
+              </linearGradient>
+            </defs>
+            <!-- Curved connections aligned to actual node centers -->
+            <path id="path-1-2" class="connection-line" d="M 120 200 Q 210 120 300 200" fill="none" />
+            <path id="pulse-1-2" class="pulse-line" d="M 120 200 Q 210 120 300 200" fill="none" />
+            
+            <path id="path-2-3" class="connection-line" d="M 380 200 Q 470 110 560 110" fill="none" />
+            <path id="pulse-2-3" class="pulse-line" d="M 380 200 Q 470 110 560 110" fill="none" />
+            
+            <path id="path-3-4" class="connection-line" d="M 380 200 Q 470 290 560 290" fill="none" />
+            <path id="pulse-3-4" class="pulse-line" d="M 380 200 Q 470 290 560 290" fill="none" />
+          </svg>
           
-          <path id="path-2-3" class="connection-line" d="M 380 200 Q 470 120 560 200" fill="none" />
-          <path id="pulse-2-3" class="pulse-line" d="M 380 200 Q 470 120 560 200" fill="none" />
+          <!-- Node 1: WhatsApp Trigger -->
+          <div class="flow-node" id="node-wa" style="position: absolute; left: 40px; top: 160px;">
+            <i class="fa-brands fa-whatsapp"></i>
+            <div class="flow-node-label">1. Entrada WhatsApp</div>
+          </div>
           
-          <path id="path-3-4" class="connection-line" d="M 380 200 Q 470 280 560 200" fill="none" />
-          <path id="pulse-3-4" class="pulse-line" d="M 380 200 Q 470 280 560 200" fill="none" />
-        </svg>
-        
-        <!-- Node 1: WhatsApp Trigger -->
-        <div class="flow-node" id="node-wa" style="position: absolute; left: 40px; top: 160px;">
-          <i class="fa-brands fa-whatsapp"></i>
-          <div class="flow-node-label">1. Entrada WhatsApp</div>
-        </div>
-        
-        <!-- Node 2: AI Processor -->
-        <div class="flow-node" id="node-ai" style="position: absolute; left: 300px; top: 160px;">
-          <i class="fa-solid fa-brain"></i>
-          <div class="flow-node-label">2. Lógica de IA</div>
-        </div>
-        
-        <!-- Node 3: CRM DB Logger -->
-        <div class="flow-node" id="node-db" style="position: absolute; left: 560px; top: 70px;">
-          <i class="fa-solid fa-database"></i>
-          <div class="flow-node-label">3. Sincronización CRM</div>
-        </div>
-        
-        <!-- Node 4: Calendar / Mail -->
-        <div class="flow-node" id="node-mail" style="position: absolute; left: 560px; top: 250px;">
-          <i class="fa-solid fa-envelope-open-text"></i>
-          <div class="flow-node-label">4. Correo Automático</div>
+          <!-- Node 2: AI Processor -->
+          <div class="flow-node" id="node-ai" style="position: absolute; left: 300px; top: 160px;">
+            <i class="fa-solid fa-brain"></i>
+            <div class="flow-node-label">2. Lógica de IA</div>
+          </div>
+          
+          <!-- Node 3: CRM DB Logger -->
+          <div class="flow-node" id="node-db" style="position: absolute; left: 560px; top: 70px;">
+            <i class="fa-solid fa-database"></i>
+            <div class="flow-node-label">3. Sincronización CRM</div>
+          </div>
+          
+          <!-- Node 4: Calendar / Mail -->
+          <div class="flow-node" id="node-mail" style="position: absolute; left: 560px; top: 250px;">
+            <i class="fa-solid fa-envelope-open-text"></i>
+            <div class="flow-node-label">4. Correo Automático</div>
+          </div>
         </div>
       </div>
     </div>

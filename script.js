@@ -304,13 +304,41 @@ document.addEventListener('DOMContentLoaded', () => {
   // Automatic periodic workflow trigger every 15 seconds
   setInterval(() => {
     if (!isWorkflowRunning) {
-      const rect = document.getElementById('workflow-visualizer-box').getBoundingClientRect();
-      const inView = rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight);
-      if (inView) {
-        runWorkflowAnimation();
+      const boardEl = document.getElementById('workflow-visualizer-box');
+      if (boardEl) {
+        const rect = boardEl.getBoundingClientRect();
+        const inView = rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight);
+        if (inView) {
+          runWorkflowAnimation();
+        }
       }
     }
   }, 15000);
+
+  // Responsive scaling for the workflow visualizer board
+  function resizeWorkflowBoard() {
+    const wrapper = document.querySelector('.visualizer-wrapper');
+    const board = document.getElementById('workflow-visualizer-box');
+    if (wrapper && board) {
+      const wrapperWidth = wrapper.clientWidth;
+      const boardWidth = 680; // Our base design width
+      const boardHeight = 360; // Our base design height
+      
+      if (wrapperWidth < boardWidth) {
+        const scale = wrapperWidth / boardWidth;
+        board.style.transform = `scale(${scale})`;
+        board.style.transformOrigin = 'top center';
+        wrapper.style.height = `${boardHeight * scale}px`;
+      } else {
+        board.style.transform = 'none';
+        wrapper.style.height = `${boardHeight}px`;
+      }
+    }
+  }
+
+  // Run on load and resize
+  resizeWorkflowBoard();
+  window.addEventListener('resize', resizeWorkflowBoard);
 
 
   // --- 5. Scroll Reveal Animation ---
