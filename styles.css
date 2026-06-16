@@ -1435,3 +1435,13 @@ footer {
     padding: 0 1.5rem;
   }
 }
+
+@media (max-width: 728px) {
+  .visualizer-wrapper {
+    height: calc(360px * ((100vw - 48px) / 680)) !important;
+  }
+  .visualizer-board {
+    transform: scale(calc((100vw - 48px) / 680)) !important;
+    transform-origin: top center !important;
+  }
+}

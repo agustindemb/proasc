@@ -320,12 +320,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const wrapper = document.querySelector('.visualizer-wrapper');
     const board = document.getElementById('workflow-visualizer-box');
     if (wrapper && board) {
-      const wrapperWidth = wrapper.clientWidth;
-      const boardWidth = 680; // Our base design width
-      const boardHeight = 360; // Our base design height
+      const viewportWidth = window.innerWidth;
+      let availableWidth = 680; // Base design width
       
-      if (wrapperWidth < boardWidth) {
-        const scale = wrapperWidth / boardWidth;
+      if (viewportWidth < 1024) {
+        // Columns stack, visualizer takes 100% of container width (viewport - 48px padding)
+        availableWidth = viewportWidth - 48;
+      } else {
+        // Desktop grid: visualizer column takes 60% of container width
+        const containerWidth = Math.min(1200, viewportWidth - 48);
+        availableWidth = containerWidth * 0.6;
+      }
+      
+      const boardWidth = 680;
+      const boardHeight = 360;
+      
+      if (availableWidth < boardWidth) {
+        const scale = availableWidth / boardWidth;
         board.style.transform = `scale(${scale})`;
         board.style.transformOrigin = 'top center';
         wrapper.style.height = `${boardHeight * scale}px`;
