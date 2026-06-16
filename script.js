@@ -338,6 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Run on load and resize
   resizeWorkflowBoard();
+  window.addEventListener('load', resizeWorkflowBoard);
   window.addEventListener('resize', resizeWorkflowBoard);
 
 

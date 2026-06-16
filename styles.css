@@ -50,6 +50,7 @@ body {
   position: relative;
   min-height: 100vh;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* Scrollbar Customization */
@@ -873,11 +874,13 @@ header {
 /* Visualizer Board Wrapper for scaling */
 .visualizer-wrapper {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   height: 360px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  overflow: visible;
+  overflow: hidden;
   transition: height 0.2s ease;
 }
 
