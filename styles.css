@@ -1513,6 +1513,31 @@ footer {
   font-weight: 400;
 }
 
+/* Specific Plan Colors for Prices */
+#plan-start .price-monthly {
+  color: var(--whatsapp);
+  text-shadow: 0 0 15px rgba(0, 245, 160, 0.15);
+}
+#plan-start .price-setup {
+  color: rgba(0, 245, 160, 0.75);
+}
+
+#plan-grow .price-monthly {
+  color: var(--primary);
+  text-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+}
+#plan-grow .price-setup {
+  color: rgba(0, 242, 254, 0.75);
+}
+
+#plan-ai .price-monthly {
+  color: #c084fc;
+  text-shadow: 0 0 15px rgba(192, 132, 252, 0.15);
+}
+#plan-ai .price-setup {
+  color: rgba(192, 132, 252, 0.75);
+}
+
 .pricing-features {
   list-style: none;
   display: flex;
