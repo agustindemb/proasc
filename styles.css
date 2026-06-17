@@ -205,6 +205,13 @@ header {
   list-style: none;
 }
 
+@media (max-width: 768px) {
+  .nav-link {
+    font-size: 0.85rem;
+    text-align: center;
+  }
+}
+
 .nav-link {
   color: var(--text-muted);
   text-decoration: none;
@@ -1375,6 +1382,14 @@ footer {
   .mobile-nav-toggle {
     display: block;
   }
+
+  /* Hide CTA button on mobile and adjust logo */
+  .nav-cta {
+    display: none;
+  }
+  .logo-text {
+    font-size: 1.2rem;
+  }
   
   .nav-menu {
     position: fixed;
@@ -1388,13 +1403,23 @@ footer {
     padding: 3rem 0;
     transition: var(--transition);
     border-top: 1px solid var(--border);
+    overflow-y: auto;
   }
   
   .nav-menu.active {
     left: 0;
   }
   
-  .nav-menu li {
+    .nav-menu li {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-menu li .nav-link {
+    width: 100%;
+    display: block;
+    padding: 0.5rem 0;
+  }
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.3s ease, transform 0.3s ease;
