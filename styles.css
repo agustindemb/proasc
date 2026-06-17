@@ -1495,20 +1495,20 @@ footer {
 }
 
 .price-setup {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--text-muted);
   margin-bottom: 0.25rem;
 }
 
 .price-monthly {
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   font-weight: 800;
   color: #fff;
   line-height: 1.2;
 }
 
 .price-monthly span {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text-muted);
   font-weight: 400;
 }
@@ -1547,7 +1547,7 @@ footer {
 }
 
 .pricing-features li {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--text-muted);
   display: flex;
   align-items: flex-start;
@@ -1584,7 +1584,7 @@ footer {
 }
 
 .pricing-results p {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: #fff;
   margin-bottom: 0.4rem;
   display: flex;
