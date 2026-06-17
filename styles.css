@@ -1393,6 +1393,7 @@ footer {
   
   .nav-menu {
     position: fixed;
+    z-index: 200;
     top: 80px;
     left: 100%;
     width: 100%;
@@ -1410,7 +1411,7 @@ footer {
     left: 0;
   }
   
-    .nav-menu li {
+  .nav-menu li {
     width: 100%;
     text-align: center;
   }
@@ -1420,6 +1421,8 @@ footer {
     display: block;
     padding: 0.5rem 0;
   }
+
+  .nav-menu li {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -1680,6 +1683,75 @@ footer {
   font-size: 0.85rem;
   color: var(--text-muted);
   line-height: 1.4;
+}
+
+/* Small device adjustments */
+@media (max-width: 520px) {
+  /* Navigation tweaks */
+  .nav-link {
+    font-size: 0.75rem;
+  }
+  .logo-text {
+    font-size: 1rem;
+  }
+  .nav-menu {
+    padding: 2rem 0;
+  }
+  .nav-menu li .nav-link {
+    padding: 0.4rem 0;
+  }
+
+  /* Section padding reduction */
+  section {
+    padding: 3rem 0;
+  }
+
+  /* Hero: stack to single column, no overflow */
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .hero-dashboard {
+    display: none;
+  }
+
+  /* Hero title scaling */
+  .hero-title {
+    font-size: clamp(1.8rem, 8vw, 2.4rem);
+    line-height: 1.2;
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+  }
+
+  /* Stack hero buttons vertically */
+  .hero-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    padding: 0.75rem 1.2rem;
+  }
+
+  /* Container padding */
+  .container {
+    padding: 0 1rem;
+  }
+
+  /* Pricing font adjustments */
+  .price-monthly {
+    font-size: 2rem;
+  }
+  .price-setup {
+    font-size: 0.9rem;
+  }
 }
 
 /* Pricing responsive queries */
