@@ -381,7 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.getElementById('btn-submit-form');
 
   if (contactForm && toast && submitBtn) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       // Change button state to loading
@@ -389,24 +389,72 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.style.opacity = '0.7';
       submitBtn.innerHTML = 'Procesando Solicitud... <i class="fa-solid fa-circle-notch fa-spin"></i>';
 
-      // Simulate database / form capture delay
-      setTimeout(() => {
-        // Trigger popup toast notification
+      // Gather form inputs
+      const name = document.getElementById('contact-name').value;
+      const company = document.getElementById('contact-company').value;
+      const email = document.getElementById('contact-email').value;
+      const phone = document.getElementById('contact-phone').value;
+      const botType = document.getElementById('contact-bot-type').value;
+      const message = document.getElementById('contact-message').value;
+
+      const payload = {
+        nombre: name,
+        empresa: company,
+        email: email,
+        whatsapp: phone,
+        servicio_automatizar: botType,
+        mensaje: message,
+        submittedAt: new Date().toISOString()
+      };
+
+      try {
+        const response = await fetch('https://n8n.proasc.com/webhook/99446ef0-452d-43a9-92cf-5f43deede005', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        // Trigger success toast notification
+        toast.innerHTML = `
+          <i class="fa-solid fa-circle-check" style="color: var(--whatsapp);"></i>
+          <div>
+            <h5 style="font-weight: 700;">¡Solicitud Enviada!</h5>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Te enviaremos un WhatsApp en breve.</p>
+          </div>
+        `;
         toast.classList.add('toast-active');
 
+        // Clear input values
+        contactForm.reset();
+
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        // Trigger error toast notification
+        toast.innerHTML = `
+          <i class="fa-solid fa-circle-xmark" style="color: #ef4444;"></i>
+          <div>
+            <h5 style="font-weight: 700; color: #ef4444;">Error al enviar</h5>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Por favor, intenta de nuevo o contáctanos por WhatsApp.</p>
+          </div>
+        `;
+        toast.classList.add('toast-active');
+      } finally {
         // Reset button
         submitBtn.disabled = false;
         submitBtn.style.opacity = '1';
         submitBtn.innerHTML = 'Enviar Solicitud de Plan de Automatización <i class="fa-solid fa-paper-plane"></i>';
 
-        // Clear input values
-        contactForm.reset();
-
-        // Dismiss toast after 4 seconds
+        // Dismiss toast after 5 seconds
         setTimeout(() => {
           toast.classList.remove('toast-active');
-        }, 4000);
-      }, 1500);
+        }, 5000);
+      }
     });
   }
 
