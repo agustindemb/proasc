@@ -902,7 +902,7 @@ header {
   width: 100%;
   max-width: 100%;
   min-width: 0;
-  height: 360px;
+  height: 420px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -912,7 +912,7 @@ header {
 
 .visualizer-board {
   width: 680px;
-  height: 360px;
+  height: 420px;
   background: rgba(13, 20, 38, 0.3);
   border-radius: 24px;
   border: 1px solid var(--border);
@@ -1486,7 +1486,7 @@ footer {
 
 @media (max-width: 728px) {
   .visualizer-wrapper {
-    height: calc(360px * ((100vw - 48px) / 680)) !important;
+    height: calc(420px * ((100vw - 48px) / 680)) !important;
   }
   .visualizer-board {
     transform: scale(calc((100vw - 48px) / 680)) !important;
