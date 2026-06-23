@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>proasc | Demo Inmersiva 3D - Tu Próxima Web</title>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #030712;
+      --primary: #00f2fe;
+      --secondary: #9b51e0;
+      --text: #ffffff;
+      --text-muted: #9ca3af;
+      --border: rgba(255, 255, 255, 0.08);
+      --glass: rgba(13, 20, 38, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Ambient background glows */
+    .bg-glows {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .glow-1 {
+      position: absolute;
+      top: -20%;
+      left: -10%;
+      width: 60%;
+      height: 60%;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.08) 0%, transparent 70%);
+      filter: blur(80px);
+    }
+
+    .glow-2 {
+      position: absolute;
+      bottom: -10%;
+      right: -10%;
+      width: 50%;
+      height: 50%;
+      background: radial-gradient(circle, rgba(155, 81, 224, 0.08) 0%, transparent 70%);
+      filter: blur(80px);
+    }
+
+    /* 3D Canvas Background */
+    #background-3d {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Navigation Header */
+    header {
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo-back {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+
+    .logo-back i {
+      color: var(--primary);
+      transition: transform 0.3s ease;
+    }
+
+    .logo-back:hover i {
+      transform: translateX(-5px);
+    }
+
+    .btn-back-main {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+    }
+
+    .btn-back-main:hover {
+      border-color: var(--primary);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
+    }
+
+    /* Content Layout */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-container {
+      text-align: center;
+      max-width: 900px;
+      margin-bottom: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .demo-tag {
+      background: linear-gradient(90deg, rgba(0, 242, 254, 0.15), rgba(155, 81, 224, 0.15));
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
+    }
+
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 6vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, #fff 30%, var(--text-muted) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      max-width: 650px;
+      line-height: 1.6;
+    }
+
+    /* 3D Tilt Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      width: 100%;
+      max-width: 1100px;
+      margin-bottom: 4rem;
+    }
+
+    .tilt-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.2rem 1.8rem;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+      transform: perspective(1000px);
+    }
+
+    .tilt-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: rgba(0, 242, 254, 0.1);
+      border: 1px solid rgba(0, 242, 254, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      transform: translateZ(30px);
+      transition: transform 0.3s ease;
+    }
+
+    .tilt-card:nth-child(2) .card-icon {
+      background: rgba(155, 81, 224, 0.1);
+      border: 1px solid rgba(155, 81, 224, 0.2);
+      color: var(--secondary);
+    }
+
+    .tilt-card:nth-child(3) .card-icon {
+      background: rgba(0, 242, 254, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #fff;
+      transform: translateZ(25px);
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      transform: translateZ(20px);
+    }
+
+    /* Hover card dynamic styles */
+    .tilt-card:hover {
+      border-color: rgba(0, 242, 254, 0.35);
+      box-shadow: 0 20px 40px -15px rgba(0, 242, 254, 0.15);
+    }
+
+    .tilt-card:nth-child(2):hover {
+      border-color: rgba(155, 81, 224, 0.35);
+      box-shadow: 0 20px 40px -15px rgba(155, 81, 224, 0.15);
+    }
+
+    /* Performance Benchmarking Widget */
+    .perf-widget {
+      width: 100%;
+      max-width: 700px;
+      background: rgba(10, 15, 30, 0.7);
+      border: 1px solid rgba(0, 242, 254, 0.15);
+      border-radius: 16px;
+      padding: 1.5rem;
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 4rem;
+    }
+
+    .widget-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 0.75rem;
+    }
+
+    .widget-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+    }
+
+    .widget-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 8px;
+      padding: 0.8rem;
+    }
+
+    .stat-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .stat-val.highlight {
+      color: var(--primary);
+    }
+
+    .stat-lbl {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* CTA Section */
+    .cta-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .btn-cta {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: #030712;
+      font-weight: 700;
+      padding: 1rem 2.2rem;
+      border-radius: 50px;
+      box-shadow: 0 10px 25px -5px rgba(0, 242, 254, 0.4);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px -5px rgba(0, 242, 254, 0.6);
+    }
+
+    .cta-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .cta-note a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .cta-note a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      z-index: 2;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 900px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 450px;
+      }
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Glows -->
+  <div class="bg-glows">
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+  </div>
+
+  <!-- 3D Canvas Background -->
+  <canvas id="background-3d"></canvas>
+
+  <!-- Navigation Header -->
+  <header>
+    <a href="index.html" class="logo-back">
+      <i class="fa-solid fa-arrow-left"></i>
+      <span>proasc</span>
+    </a>
+    <a href="index.html" class="btn-back-main">Volver</a>
+  </header>
+
+  <!-- Main Showcase Content -->
+  <main>
+    <div class="hero-container">
+      <span class="demo-tag"><i class="fa-solid fa-cube"></i> Demo Interactiva 3D</span>
+      <h1 class="hero-title">Tu Próxima Web Puede Ser <span>Diferente</span></h1>
+      <p class="hero-desc">
+        Fusionamos un diseño visual inmersivo de vanguardia con un rendimiento ultrarrápido y libre de dependencias. Atrae clientes con experiencias interactivas memorables.
+      </p>
+    </div>
+
+    <!-- 3D Tilt Cards Section -->
+    <div class="cards-grid">
+      
+      <!-- Card 1: 3D Physics -->
+      <div class="tilt-card" id="card-1">
+        <div class="card-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+        <h3 class="card-title">Interacciones 3D</h3>
+        <p class="card-desc">Sistemas que responden físicamente al cursor, al giroscopio y al scroll del usuario, creando una verdadera sensación de profundidad tridimensional.</p>
+      </div>
+
+      <!-- Card 2: Ultra Performance -->
+      <div class="tilt-card" id="card-2">
+        <div class="card-icon"><i class="fa-solid fa-gauge-high"></i></div>
+        <h3 class="card-title">Cero Librerías</h3>
+        <p class="card-desc">Construido 100% sobre APIs nativas del navegador (HTML5 Canvas y CSS3 3D). Sin dependencias pesadas que ralenticen la carga inicial en móviles.</p>
+      </div>
+
+      <!-- Card 3: Brand Identity -->
+      <div class="tilt-card" id="card-3">
+        <div class="card-icon"><i class="fa-solid fa-gem"></i></div>
+        <h3 class="card-title">Diseño Premium</h3>
+        <p class="card-desc">Alineamos la identidad tecnológica de tu negocio usando paletas de colores sofisticadas, tipografías elegantes y micro-animaciones fluidas.</p>
+      </div>
+
+    </div>
+
+    <!-- Performance Widget -->
+    <div class="perf-widget">
+      <div class="widget-header">
+        <span class="widget-title"><i class="fa-solid fa-circle-nodes"></i> Consola de Rendimiento en Tiempo Real</span>
+        <span class="widget-desc">Métricas activas del motor de renderizado</span>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-val highlight" id="fps-counter">60.0</div>
+          <div class="stat-lbl">Fotogramas/S (FPS)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">~12.4 ms</div>
+          <div class="stat-lbl">Tiempo de Carga</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">19.2 KB</div>
+          <div class="stat-lbl">Peso HTML/CSS/JS</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val highlight">100/100</div>
+          <div class="stat-lbl">Score Lighthouse</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-container">
+      <a href="index.html#contact" class="btn-cta">
+        <span>Quiero una Web como esta</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+      <span class="cta-note">¿Quieres ver más planes? Consulta nuestra sección de <a href="precios.html">Precios</a>.</span>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 ASC (Automation System Company). Renderizado nativo optimizado.</p>
+  </footer>
+
+  <!-- 3D Engine & Interactive Logic -->
+  <script>
+    // --- 1. Custom 3D Particle Sphere Renderer (Pure Native Vanilla JS) ---
+    const canvas = document.getElementById('background-3d');
+    const ctx = canvas.getContext('2d');
+    
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+    let centerX = width / 2;
+    let centerY = height / 2;
+
+    const particles = [];
+    const particleCount = 200;
+    const sphereRadius = Math.min(width, height) * 0.28;
+    const fov = 400; // Perspective focal depth
+
+    // Handle resize
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      centerX = width / 2;
+      centerY = height / 2;
+    });
+
+    // Particle object constructor
+    class Point3D {
+      constructor(x, y, z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        
+        // Base coordinate preservation
+        this.baseX = x;
+        this.baseY = y;
+        this.baseZ = z;
+
+        this.color = Math.random() > 0.5 ? '#00f2fe' : '#9b51e0';
+        this.size = Math.random() * 2 + 1;
+      }
+
+      project(cx, cy) {
+        // 3D perspective projection formula
+        const scale = fov / (fov + this.z);
+        const projX = this.x * scale + cx;
+        const projY = this.y * scale + cy;
+        return { x: projX, y: projY, size: this.size * scale, depth: this.z };
+      }
+    }
+
+    // Generate random points distributed on a 3D sphere surface
+    for (let i = 0; i < particleCount; i++) {
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos((Math.random() * 2) - 1);
+      
+      const px = sphereRadius * Math.sin(phi) * Math.cos(theta);
+      const py = sphereRadius * Math.sin(phi) * Math.sin(theta);
+      const pz = sphereRadius * Math.cos(phi);
+      
+      particles.push(new Point3D(px, py, pz));
+    }
+
+    // Interactive mouse rotation tracking
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetRotX = 0.002;
+    let targetRotY = 0.003;
+    let rotX = 0.002;
+    let rotY = 0.003;
+
+    window.addEventListener('mousemove', (e) => {
+      // Calculate offset speed from screen center
+      const dx = (e.clientX - centerX) / centerX;
+      const dy = (e.clientY - centerY) / centerY;
+      
+      targetRotY = dx * 0.012;
+      targetRotX = -dy * 0.012;
+      
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    // --- 2. Live FPS counter calculation ---
+    let lastTime = performance.now();
+    let frames = 0;
+    let fpsVal = 60.0;
+    const fpsElement = document.getElementById('fps-counter');
+
+    // Engine loop
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Smooth rotation dampening
+      rotX += (targetRotX - rotX) * 0.05;
+      rotY += (targetRotY - rotY) * 0.05;
+
+      const cosX = Math.cos(rotX);
+      const sinX = Math.sin(rotX);
+      const cosY = Math.cos(rotY);
+      const sinY = Math.sin(rotY);
+
+      // Project and draw particles
+      const projected = [];
+
+      for (let p of particles) {
+        // Rotate around Y-axis
+        let x1 = p.x * cosY - p.z * sinY;
+        let z1 = p.z * cosY + p.x * sinY;
+        
+        // Rotate around X-axis
+        let y2 = p.y * cosX - z1 * sinX;
+        let z2 = z1 * cosX + p.y * sinX;
+
+        // Apply mouse displacement (interactive push away)
+        let dispX = 0;
+        let dispY = 0;
+        if (mouseX > 0 && mouseY > 0) {
+          const proj = p.project(centerX, centerY);
+          const dx = mouseX - proj.x;
+          const dy = mouseY - proj.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            const force = (120 - dist) / 120;
+            // Push particle in 3D coordinate space slightly
+            x1 -= (dx / dist) * force * 15;
+            y2 -= (dy / dist) * force * 15;
+          }
+        }
+
+        p.x = x1;
+        p.y = y2;
+        p.z = z2;
+
+        projected.push(p.project(centerX, centerY));
+      }
+
+      // Sort by depth (back to front) for correct rendering layer
+      projected.sort((a, b) => b.depth - a.depth);
+
+      // Render particles & connect close points with thin glow wires
+      for (let i = 0; i < projected.length; i++) {
+        const p1 = projected[i];
+        
+        // Fade out points that are far behind
+        const opacity = Math.max(0.1, Math.min(0.9, (fov - p1.depth) / (fov * 1.5)));
+        
+        ctx.beginPath();
+        ctx.arc(p1.x, p1.y, Math.max(0.5, p1.size), 0, Math.PI * 2);
+        ctx.fillStyle = p1.depth > 0 
+          ? `rgba(155, 81, 224, ${opacity})` 
+          : `rgba(0, 242, 254, ${opacity})`;
+        ctx.shadowBlur = p1.depth < 0 ? 8 : 0;
+        ctx.shadowColor = '#00f2fe';
+        ctx.fill();
+        ctx.shadowBlur = 0; // reset
+
+        // Draw structural connection wires (constellation style)
+        for (let j = i + 1; j < projected.length; j++) {
+          const p2 = projected[j];
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 85) {
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            // Depth fading color bridge
+            const bridgeColor = p1.depth < 0 ? 'rgba(0, 242, 254,' : 'rgba(155, 81, 224,';
+            ctx.strokeStyle = `${bridgeColor} ${0.12 * (1 - distance / 85)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+
+      // FPS tracking calculation
+      frames++;
+      const time = performance.now();
+      if (time >= lastTime + 500) {
+        fpsVal = ((frames * 1000) / (time - lastTime)).toFixed(1);
+        fpsElement.textContent = fpsVal;
+        frames = 0;
+        lastTime = time;
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // --- 3. 3D Tilt Hover Effect for Cards (Pure Vanilla JS) ---
+    const cards = document.querySelectorAll('.tilt-card');
+
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        
+        // Mouse positions relative to the card dimensions
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Calculate center coordinate offsets (-0.5 to 0.5)
+        const xc = rect.width / 2;
+        const yc = rect.height / 2;
+        const dx = (x - xc) / xc;
+        const dy = (yc - y) / yc; // inverted Y
+
+        // Tilt angle bounds (max 12 deg tilt)
+        const tiltX = dy * 12;
+        const tiltY = dx * 12;
+
+        card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.03, 1.03, 1.03)`;
+        
+        // Set CSS custom variables for reflection glow positional track
+        card.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
+        card.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
+      });
+
+      card.addEventListener('mouseleave', () => {
+        // Smoothly restore default layout positions
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        card.style.setProperty('--mouse-x', '50%');
+        card.style.setProperty('--mouse-y', '50%');
+      });
+    });
+  </script>
+</body>
+</html>
