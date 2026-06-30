@@ -419,6 +419,60 @@
         gap: 0.75rem;
       }
     }
+
+    /* Floating WhatsApp Button */
+    .floating-whatsapp-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 1.8rem;
+      box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.4), 
+                  0 0 0 0px rgba(37, 211, 102, 0.3);
+      z-index: 9999;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: whatsapp-pulse 2s infinite;
+    }
+
+    .floating-whatsapp-btn:hover {
+      transform: scale(1.1) rotate(8deg);
+      box-shadow: 0 15px 30px -5px rgba(37, 211, 102, 0.6);
+      color: #fff;
+    }
+
+    @keyframes whatsapp-pulse {
+      0% {
+        box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.4), 
+                    0 0 0 0px rgba(37, 211, 102, 0.4);
+      }
+      70% {
+        box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.4), 
+                    0 0 0 15px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.4), 
+                    0 0 0 0px rgba(37, 211, 102, 0);
+      }
+    }
+
+    /* Responsive adjustment for mobile */
+    @media (max-width: 520px) {
+      .floating-whatsapp-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -517,6 +571,11 @@
   <footer>
     <p>&copy; 2026 ASC (Automation System Company). Renderizado nativo optimizado.</p>
   </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/5493442490633?text=Hola!%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20automatizaciones%20de%20proasc." target="_blank" class="floating-whatsapp-btn" id="btn-floating-whatsapp" aria-label="Chatear por WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
 
   <!-- 3D Engine & Interactive Logic -->
   <script>
