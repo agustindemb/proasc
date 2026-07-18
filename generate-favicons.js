@@ -3,7 +3,7 @@ import fs from 'fs';
 
 async function generate() {
   try {
-    const source = 'public/logo.png'; // 1024x1024 JPEG disguised as PNG
+    const source = 'public/logo.jpeg'; // Use the correct user logo
     
     // Generate 48x48 favicon (multiple of 48, required by Google crawler)
     await sharp(source)
