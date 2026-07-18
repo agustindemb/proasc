@@ -4,7 +4,7 @@ description: "Descubre cómo implementar chatbots de IA y flujos de automatizaci
 publishDate: "2026-07-18"
 updateDate: "2026-07-18"
 author: "Agustín Demb"
-authorLinkedin: "https://www.linkedin.com/in/agustindemb"
+authorLinkedin: "https://www.linkedin.com/in/agustin-demb-42b312174/"
 category: "WhatsApp"
 tags: ["WhatsApp", "Chatbots", "IA", "CRM"]
 ---
