@@ -55,13 +55,13 @@ const blogSchemaData = {
   breadcrumbs={breadcrumbs}
   conversionGoal="submit-form"
 >
-  <div class="container blog-layout-container" style="padding-top: 140px; padding-bottom: 6rem; display: grid; grid-template-columns: 1fr 300px; gap: 3rem; align-items: start;">
+  <div class="container blog-layout-container" style="padding-top: 140px; padding-bottom: 6rem; padding-left: clamp(1.5rem, 5vw, 3rem); padding-right: clamp(1.5rem, 5vw, 3rem); display: grid; grid-template-columns: 1fr 300px; gap: 3rem; align-items: start;">
     
     <!-- Main Article Body -->
     <article style="width: 100%; overflow: hidden;">
       
       <!-- Article Metadata Header -->
-      <header style="margin-bottom: 2.5rem; text-align: left;">
+      <header style="margin-bottom: 2.5rem; text-align: left; padding-top: 1rem;">
         {data.category && (
           <span style="background: linear-gradient(90deg, var(--primary), var(--secondary)); color: #030712; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 50px; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.5px;">
             {data.category}
