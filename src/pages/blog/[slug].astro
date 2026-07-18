@@ -73,36 +73,36 @@ const blogSchemaData = {
         </h1>
         
         <!-- EEAT Author and Update Info -->
-        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.85rem; color: var(--text-muted); border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 1.5rem;">
-          <div>
-            <i class="fa-regular fa-user" style="color: var(--primary); margin-right: 0.4rem;"></i>
-            <span>Autor: </span>
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem; font-size: 0.9rem; color: var(--text-muted); border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 1.5rem;">
+          <div style="display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-regular fa-user" style="color: var(--primary); font-size: 1rem;"></i>
+            <span>Autor:</span>
             {data.authorLinkedin ? (
-              <a href={data.authorLinkedin} target="_blank" style="color: #fff; text-decoration: none; font-weight: 600; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='#fff'">
-                {data.author} <i class="fa-brands fa-linkedin" style="font-size: 0.8rem; color: #0077b5;"></i>
+              <a href={data.authorLinkedin} target="_blank" style="color: #fff; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.35rem; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='#fff'">
+                {data.author} <i class="fa-brands fa-linkedin" style="font-size: 0.95rem; color: #0077b5; vertical-align: middle;"></i>
               </a>
             ) : (
               <span style="color: #fff; font-weight: 600;">{data.author}</span>
             )}
           </div>
           
-          <div>
-            <i class="fa-regular fa-calendar" style="color: var(--primary); margin-right: 0.4rem;"></i>
-            <span>Publicado: </span>
+          <div style="display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-regular fa-calendar" style="color: var(--primary); font-size: 1rem;"></i>
+            <span>Publicado:</span>
             <span style="color: #fff; font-weight: 500;">{data.publishDate}</span>
           </div>
 
           {data.updateDate && data.updateDate !== data.publishDate && (
-            <div>
-              <i class="fa-regular fa-calendar-check" style="color: var(--secondary); margin-right: 0.4rem;"></i>
-              <span>Actualizado: </span>
+            <div style="display: inline-flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-regular fa-calendar-check" style="color: var(--secondary); font-size: 1rem;"></i>
+              <span>Actualizado:</span>
               <span style="color: #fff; font-weight: 500;">{data.updateDate}</span>
             </div>
           )}
           
-          <div>
-            <i class="fa-regular fa-clock" style="color: var(--primary); margin-right: 0.4rem;"></i>
-            <span>Lectura: </span>
+          <div style="display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-regular fa-clock" style="color: var(--primary); font-size: 1rem;"></i>
+            <span>Lectura:</span>
             <span style="color: #fff; font-weight: 500;">{readingTime} min</span>
           </div>
         </div>
