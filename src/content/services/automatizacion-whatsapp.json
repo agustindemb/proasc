@@ -1,0 +1,65 @@
+{
+  "title": "Automatización de WhatsApp para Empresas | proasc",
+  "metaDescription": "Transforma tu WhatsApp Business con chatbots de IA y automatización. Atiende clientes, califica leads y vende 24/7 en piloto automático.",
+  "serviceType": "Automatización de WhatsApp",
+  "h1": "Automatiza tus Ventas y Soporte por WhatsApp",
+  "subtitle": "Conecta tu negocio con millones de clientes. Respuestas inmediatas, integración con tu CRM y atención 24/7 sin esfuerzo.",
+  "intro": "Olvídate de responder manualmente las mismas preguntas una y otra vez. Diseñamos e implementamos flujos conversacionales inteligentes en WhatsApp que atienden a tus prospectos al instante, califican sus necesidades y agendan reuniones directamente en tu calendario comercial.",
+  "benefits": [
+    {
+      "title": "Respuestas en Subsegundos",
+      "description": "Asegura la atención de tus clientes al instante con una infraestructura optimizada en la nube utilizando la API oficial de WhatsApp Cloud.",
+      "icon": "fa-solid fa-bolt"
+    },
+    {
+      "title": "Sincronización con CRM",
+      "description": "Escribe y lee información directamente en HubSpot, Salesforce, Zoho o Google Sheets en tiempo real y sin errores humanos.",
+      "icon": "fa-solid fa-code-merge"
+    },
+    {
+      "title": "Traspaso Inteligente a Humanos",
+      "description": "El chatbot detecta cuándo una consulta es compleja o requiere atención personalizada y transfiere el chat a un agente humano inmediatamente.",
+      "icon": "fa-solid fa-user-shield"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": 1,
+      "title": "Contacto Inicial",
+      "description": "El cliente inicia la conversación en WhatsApp desde un anuncio, tu web o de forma directa."
+    },
+    {
+      "step": 2,
+      "title": "Calificación por IA",
+      "description": "Nuestros flujos semánticos interactúan, responden FAQs y recogen los datos clave del prospecto."
+    },
+    {
+      "step": 3,
+      "title": "Cierre y Registro",
+      "description": "Se agenda una reunión, se procesa un pago o se guarda el contacto calificado en tu CRM."
+    }
+  ],
+  "cases": [
+    {
+      "title": "Inmobiliaria Norte",
+      "description": "Implementación de chatbot calificador de leads para alquileres y ventas en Buenos Aires.",
+      "result": "Ahorro de 35 horas semanales y aumento del 40% en citas agendadas.",
+      "clientSlug": "caso-inmobiliaria-norte"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "¿Es necesario tener la API oficial de WhatsApp?",
+      "answer": "Sí, para garantizar estabilidad y evitar bloqueos por parte de Meta, trabajamos exclusivamente con la API oficial de WhatsApp Business Cloud."
+    },
+    {
+      "question": "¿Se integra con mi CRM actual?",
+      "answer": "Totalmente. Podemos conectar los flujos de chat con HubSpot, Salesforce, ActiveCampaign, Google Sheets y bases de datos personalizadas."
+    },
+    {
+      "question": "¿Cómo maneja el bot las preguntas complejas?",
+      "answer": "Cuando el bot detecta que una consulta sale de su base de conocimientos o requiere empatía humana, transfiere la sesión a un agente real y le notifica en su panel."
+    }
+  ],
+  "conversionGoal": "whatsapp-cta"
+}

@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const breadcrumbs = [
+  { name: "Inicio", url: "/" },
+  { name: "Sobre Nosotros", url: "/sobre-nosotros" }
+];
+---
+
+<Layout
+  title="Sobre Nosotros | ASC - Automation System Company"
+  description="Conoce al equipo de ingenieros de proasc (ASC). Nos apasiona erradicar las tareas manuales repetitivas y automatizar flujos de trabajo con IA y WhatsApp."
+  seoType="WebPage"
+  breadcrumbs={breadcrumbs}
+  conversionGoal="submit-form"
+>
+  <!-- Hero Section -->
+  <section style="padding-top: 140px; padding-bottom: 3rem; text-align: center;">
+    <div class="container">
+      <div class="section-header reveal" style="margin-bottom: 2rem;">
+        <span class="section-subtitle">Quiénes Somos</span>
+        <h1 class="section-title">Nuestra Pasión es la Automatización</h1>
+        <p class="section-desc">Estructuramos e instalamos la columna vertebral digital de tu negocio para que funcione en piloto automático.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- History & Philosophy -->
+  <section style="padding-top: 0; padding-bottom: 4rem;">
+    <div class="container" style="max-width: 900px; line-height: 1.7; font-size: 1.05rem;">
+      <div class="glass-card" style="padding: 3rem; border-radius: 20px;">
+        <h2 class="gradient-text" style="font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; margin-bottom: 1.5rem;">La Historia de ASC</h2>
+        <p style="margin-bottom: 1.5rem; color: var(--text);">
+          ASC (Automation System Company), operando comercialmente como <strong>proasc</strong>, nació con una misión clara: 
+          <strong>liberar a los equipos de trabajo de las tareas manuales y repetitivas que absorben su tiempo y causan errores operativos</strong>.
+        </p>
+        <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
+          Somos un equipo de ingenieros de software, diseñadores de flujos y especialistas en Inteligencia Artificial. 
+          Vemos un futuro donde las computadoras resuelven las tareas lógicas del día a día (agendar llamadas, transcribir notas, actualizar CRMs, responder preguntas frecuentes) y los humanos se concentran en lo que mejor saben hacer: construir relaciones, negociar y crear estrategias.
+        </p>
+        <p style="color: var(--text-muted);">
+          Desde nuestra sede de operaciones, diseñamos integraciones a medida utilizando APIs de vanguardia, bases de datos seguras y modelos LLM optimizados (como Gemini y GPT), garantizando un retorno de inversión inmediato a través del ahorro medible de horas de trabajo mensuales.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values (EEAT trust metrics) -->
+  <section style="background: rgba(255, 255, 255, 0.01); border-top: 1px solid rgba(255, 255, 255, 0.03); border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding: 5rem 0;">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+        
+        <div class="glass-card" style="padding: 2rem; border-radius: 16px;">
+          <div style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"><i class="fa-solid fa-code"></i></div>
+          <h3 style="color: #fff; font-size: 1.25rem; margin-bottom: 0.5rem; font-family: 'Space Grotesk', sans-serif;">Ingeniería de Calidad</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">Desarrollamos soluciones estables, libres de dependencias innecesarias y 100% integradas a la API oficial de WhatsApp Cloud.</p>
+        </div>
+
+        <div class="glass-card" style="padding: 2rem; border-radius: 16px;">
+          <div style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;"><i class="fa-solid fa-user-check"></i></div>
+          <h3 style="color: #fff; font-size: 1.25rem; margin-bottom: 0.5rem; font-family: 'Space Grotesk', sans-serif;">Enfoque en E-E-A-T</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">Nuestros expertos firman sus artículos y guías, respaldados por años de trayectoria profesional en software y seguridad de datos.</p>
+        </div>
+
+        <div class="glass-card" style="padding: 2rem; border-radius: 16px;">
+          <div style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3 style="color: #fff; font-size: 1.25rem; margin-bottom: 0.5rem; font-family: 'Space Grotesk', sans-serif;">Protección de Datos</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">Toda información tratada por nuestros chatbots e integraciones se transfiere de forma segura y en cumplimiento de normativas de privacidad.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Author/Founder Profile -->
+  <section style="padding: 5rem 0;">
+    <div class="container" style="max-width: 800px;">
+      <h2 style="font-family: 'Space Grotesk', sans-serif; text-align: center; margin-bottom: 3rem; font-size: 2rem; color: #fff;">Liderazgo Técnico</h2>
+      
+      <div class="glass-card" style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; padding: 2.5rem; border-radius: 16px;">
+        <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; border: 2px solid var(--primary); flex-shrink: 0; margin: 0 auto;">
+          <!-- Using default logo as fallback or user-placeholder -->
+          <img src="/logo.jpeg" alt="Agustín Demb - Cofundador proasc" width="120" height="120" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div style="flex: 1; min-width: 250px; text-align: left;">
+          <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 0.25rem;">Agustín Demb</h3>
+          <span style="color: var(--primary); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 1rem;">Cofundador & Ingeniero de Automatización</span>
+          <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">
+            Especialista en arquitectura de automatizaciones integradas de backend, despliegue de modelos cognitivos de IA e integraciones oficiales de API Cloud. Apasionado por la optimización y la escalabilidad digital.
+          </p>
+          <a href="https://www.linkedin.com/in/agustindemb" target="_blank" style="color: #fff; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: background 0.3s;">
+            <i class="fa-brands fa-linkedin" style="color: #0077b5;"></i> Ver Perfil de LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

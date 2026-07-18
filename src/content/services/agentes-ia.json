@@ -1,0 +1,50 @@
+{
+  "title": "Agentes de IA para Soporte y Operaciones | proasc",
+  "metaDescription": "Agentes de IA autónomos con capacidad para ejecutar acciones, consultar bases de datos y resolver incidentes complejos en piloto automático.",
+  "serviceType": "Agentes de IA",
+  "h1": "Agentes de IA Autónomos para tu Equipo",
+  "subtitle": "IA con capacidad operativa real. Ejecución de consultas, envío de reportes y soporte automatizado de alto nivel.",
+  "intro": "Lleva la automatización más allá de las respuestas predefinidas. Diseñamos e instalamos agentes autónomos basados en Inteligencia Artificial capaces de conectarse a tus bases de datos, razonar en lenguaje natural y ejecutar acciones lógicas complejas como cancelar pedidos, actualizar stocks o verificar pagos.",
+  "benefits": [
+    {
+      "title": "Capacidad de Acción",
+      "description": "El agente no solo habla; ejecuta comandos, consulta bases de datos y procesa solicitudes operativas.",
+      "icon": "fa-solid fa-bolt"
+    },
+    {
+      "title": "Resolución Autónoma",
+      "description": "Resuelve incidentes de primer nivel sin necesidad de intervención de tu equipo de soporte.",
+      "icon": "fa-solid fa-robot"
+    },
+    {
+      "title": "Seguridad de Datos",
+      "description": "Políticas estrictas de acceso para garantizar que la IA solo opere bajo parámetros autorizados.",
+      "icon": "fa-solid fa-shield-halved"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": 1,
+      "title": "Conexión de APIs",
+      "description": "Definimos los accesos de lectura y escritura seguros del agente de IA a tus herramientas digitales."
+    },
+    {
+      "step": 2,
+      "title": "Entrenamiento Funcional",
+      "description": "Configuramos las directrices lógicas y las tareas específicas que el agente debe completar."
+    },
+    {
+      "step": 3,
+      "title": "Operación Autónoma",
+      "description": "El agente atiende a tus usuarios, resolviendo casos operativos 24/7 y reportando logs de control."
+    }
+  ],
+  "cases": [],
+  "faqs": [
+    {
+      "question": "¿Es seguro darle acceso a mis bases de datos?",
+      "answer": "Sí. Los agentes de IA operan mediante APIs aisladas y con permisos mínimos necesarios (por ejemplo, sólo lectura o escritura acotada), impidiendo cualquier alteración no deseada."
+    }
+  ],
+  "conversionGoal": "submit-form"
+}

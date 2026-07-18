@@ -1,0 +1,58 @@
+{
+  "title": "Automatización de Turnos y Atención para Clínicas | proasc",
+  "metaDescription": "Automatiza la gestión de turnos, confirmaciones y seguimientos de pacientes en tu clínica o consultorio médico mediante WhatsApp sin esfuerzo.",
+  "serviceType": "Automatización para Clínicas",
+  "h1": "Automatiza Turnos y Atención de Pacientes por WhatsApp",
+  "subtitle": "Gestión de turnos médicos 24/7. Confirmaciones automáticas, recordatorios y seguimiento post-consulta sin esfuerzo.",
+  "intro": "El sector salud maneja un volumen altísimo de consultas diarias por WhatsApp: pedidos de turnos, consultas de cobertura, cambios de horario y cancelaciones. Diseñamos sistemas automáticos que gestionan la agenda de tu clínica o consultorio de forma inteligente, reduciendo ausencias y optimizando el tiempo de tu personal administrativo.",
+  "benefits": [
+    {
+      "title": "Agenda Inteligente",
+      "description": "Los pacientes pueden agendar, reprogramar o cancelar turnos desde WhatsApp, con sincronización directa al calendario del profesional.",
+      "icon": "fa-solid fa-calendar-check"
+    },
+    {
+      "title": "Reducción de Ausentismo",
+      "description": "Envío automático de recordatorios 24 hs y 2 hs antes del turno para reducir drásticamente las inasistencias.",
+      "icon": "fa-solid fa-user-clock"
+    },
+    {
+      "title": "Formulario Pre-Consulta",
+      "description": "El paciente completa sus síntomas principales antes de la consulta, optimizando el tiempo de atención del profesional.",
+      "icon": "fa-solid fa-notes-medical"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": 1,
+      "title": "Integración de Agenda",
+      "description": "Conectamos el sistema al calendario del consultorio (Google Calendar o sistema de gestión médica existente)."
+    },
+    {
+      "step": 2,
+      "title": "Flujo de Agendamiento",
+      "description": "El paciente elige especialidad, profesional, fecha y horario disponible directamente desde WhatsApp."
+    },
+    {
+      "step": 3,
+      "title": "Recordatorios y Seguimiento",
+      "description": "El sistema envía confirmaciones y recordatorios automáticos, y post-consulta recopila reseñas de satisfacción."
+    }
+  ],
+  "cases": [],
+  "faqs": [
+    {
+      "question": "¿Pueden manejar múltiples especialidades y médicos?",
+      "answer": "Sí. El sistema soporta múltiples profesionales con calendarios independientes. El paciente selecciona la especialidad y el bot muestra la disponibilidad real del médico correspondiente."
+    },
+    {
+      "question": "¿Cómo se manejan los pagos de la consulta?",
+      "answer": "Podemos integrar la generación de un link de pago (Mercado Pago, Stripe u otros) directamente en el flujo de agendamiento para que el paciente pague la seña o la consulta completa por anticipado."
+    },
+    {
+      "question": "¿Es compatible con obras sociales y prepagas?",
+      "answer": "El asistente puede filtrar a los pacientes por cobertura médica, verificar si el profesional trabaja con su prepaga y derivar a un operador humano en casos especiales."
+    }
+  ],
+  "conversionGoal": "whatsapp-cta"
+}

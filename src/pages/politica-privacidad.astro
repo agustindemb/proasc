@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const breadcrumbs = [
+  { name: "Inicio", url: "/" },
+  { name: "Política de Privacidad", url: "/politica-privacidad" }
+];
+---
+
+<Layout
+  title="Política de Privacidad | proasc"
+  description="Conoce las políticas de privacidad y tratamiento de datos de proasc (ASC). Nos tomamos en serio la seguridad de tu información comercial."
+  seoType="WebPage"
+  breadcrumbs={breadcrumbs}
+>
+  <section style="padding-top: 140px; padding-bottom: 5rem;">
+    <div class="container" style="max-width: 800px; line-height: 1.8; color: var(--text-muted);">
+      <h1 class="section-title" style="text-align: left; margin-bottom: 2rem; color: #fff; font-size: 2.5rem;">Política de Privacidad</h1>
+      
+      <p style="margin-bottom: 1.5rem; color: var(--text);">Fecha de entrada en vigor: 18 de Julio de 2026</p>
+      
+      <p style="margin-bottom: 1.5rem;">
+        En <strong>proasc (ASC - Automation System Company)</strong>, valoramos y respetamos tu privacidad. Esta política describe cómo recopilamos, utilizamos y protegemos la información personal y comercial que nos proporcionas a través de nuestro sitio web y de las integraciones de software que desarrollamos.
+      </p>
+
+      <h2 style="color: #fff; font-size: 1.5rem; margin: 2rem 0 1rem 0; font-family: 'Space Grotesk', sans-serif;">1. Información que Recopilamos</h2>
+      <p style="margin-bottom: 1.5rem;">
+        Cuando completas nuestro formulario de contacto o inicias una interacción con nuestro chatbot demostrativo, podemos solicitarte datos personales como:
+      </p>
+      <ul style="margin-left: 2rem; margin-bottom: 1.5rem; list-style-type: disc;">
+        <li>Nombre completo y cargo en la empresa.</li>
+        <li>Dirección de correo electrónico corporativo.</li>
+        <li>Número de teléfono o WhatsApp.</li>
+        <li>Información sobre las operativas y cuellos de botella de tu negocio.</li>
+      </ul>
+
+      <h2 style="color: #fff; font-size: 1.5rem; margin: 2rem 0 1rem 0; font-family: 'Space Grotesk', sans-serif;">2. Uso de la Información</h2>
+      <p style="margin-bottom: 1.5rem;">
+        Los datos recopilados se utilizan única y exclusivamente para:
+      </p>
+      <ul style="margin-left: 2rem; margin-bottom: 1.5rem; list-style-type: disc;">
+        <li>Responder a tus solicitudes de cotización o demostraciones técnicas.</li>
+        <li>Analizar y diseñar propuestas de automatización adaptadas a tu empresa.</li>
+        <li>Enviar información sobre actualizaciones de sistemas o boletines informativos (si te has suscrito voluntariamente).</li>
+      </ul>
+
+      <h2 style="color: #fff; font-size: 1.5rem; margin: 2rem 0 1rem 0; font-family: 'Space Grotesk', sans-serif;">3. Integraciones de WhatsApp y Terceros</h2>
+      <p style="margin-bottom: 1.5rem;">
+        Como parte de nuestros servicios de automatización de WhatsApp, interactuamos con la API de WhatsApp Business Cloud (proveída por Meta Platforms, Inc.). En ningún caso almacenamos las conversaciones de tus clientes finales en servidores propios de forma indefinida, a menos que sea un requerimiento explícito del proyecto bajo estrictas normas de encriptación.
+      </p>
+
+      <h2 style="color: #fff; font-size: 1.5rem; margin: 2rem 0 1rem 0; font-family: 'Space Grotesk', sans-serif;">4. Seguridad de los Datos</h2>
+      <p style="margin-bottom: 1.5rem;">
+        Implementamos medidas de seguridad técnicas e institucionales estándar para proteger tu información contra pérdidas, robos o accesos no autorizados. Sin embargo, recuerda que ningún canal de transmisión en internet es 100% inmune.
+      </p>
+
+      <h2 style="color: #fff; font-size: 1.5rem; margin: 2rem 0 1rem 0; font-family: 'Space Grotesk', sans-serif;">5. Tus Derechos (Acceso, Rectificación y Cancelación)</h2>
+      <p style="margin-bottom: 1.5rem;">
+        Puedes solicitar en cualquier momento el acceso a tus datos personales, su rectificación o eliminación total de nuestras bases de datos comerciales enviando un correo electrónico a <a href="mailto:ventas@proasc.com" style="color: var(--primary);">ventas@proasc.com</a>.
+      </p>
+    </div>
+  </section>
+</Layout>

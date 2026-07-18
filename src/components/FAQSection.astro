@@ -1,0 +1,168 @@
+---
+interface Props {
+  faqs: Array<{ question: string; answer: string }>;
+}
+
+const { faqs } = Astro.props;
+
+// Construct FAQPage JSON-LD Schema
+const faqSchema = faqs && faqs.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+} : null;
+---
+
+<!-- FAQ Schema Injection -->
+{faqSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+)}
+
+<div class="faq-container">
+  {faqs.map((faq, index) => (
+    <div class="glass-card faq-item" id={`faq-${index}`}>
+      <button class="faq-trigger" aria-expanded="false" aria-controls={`faq-answer-${index}`}>
+        <span class="faq-question">{faq.question}</span>
+        <i class="fa-solid fa-plus faq-icon"></i>
+      </button>
+      <div class="faq-content" id={`faq-answer-${index}`} hidden>
+        <div class="faq-body">
+          <p>{faq.answer}</p>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .faq-item {
+    padding: 0 !important; /* Overwrite card padding */
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+
+  .faq-item.active {
+    border-color: rgba(0, 242, 254, 0.3);
+    background: rgba(13, 20, 38, 0.6);
+  }
+
+  .faq-trigger {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-family: inherit;
+  }
+
+  .faq-trigger:focus-visible {
+    outline: 2px solid var(--primary);
+  }
+
+  .faq-icon {
+    font-size: 0.9rem;
+    color: var(--primary);
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item.active .faq-icon {
+    transform: rotate(45deg);
+    color: var(--secondary);
+  }
+
+  .faq-content {
+    transition: max-height 0.3s ease;
+    overflow: hidden;
+  }
+
+  .faq-body {
+    padding: 0 1.5rem 1.25rem 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+</style>
+
+<!-- Accordion Toggle Logic -->
+<script>
+  function setupFaqs() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const trigger = item.querySelector('.faq-trigger');
+      const content = item.querySelector('.faq-content') as HTMLElement;
+      
+      if (trigger && content) {
+        trigger.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          
+          // Close all FAQ items for clean UX (optional, but standard)
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove('active');
+              const otherTrigger = otherItem.querySelector('.faq-trigger');
+              const otherContent = otherItem.querySelector('.faq-content') as HTMLElement;
+              if (otherTrigger && otherContent) {
+                otherTrigger.setAttribute('aria-expanded', 'false');
+                otherContent.style.maxHeight = '0px';
+                setTimeout(() => {
+                  if (!otherItem.classList.contains('active')) {
+                    otherContent.setAttribute('hidden', '');
+                  }
+                }, 300);
+              }
+            }
+          });
+
+          if (isActive) {
+            // Close current
+            item.classList.remove('active');
+            trigger.setAttribute('aria-expanded', 'false');
+            content.style.maxHeight = '0px';
+            setTimeout(() => {
+              if (!item.classList.contains('active')) {
+                content.setAttribute('hidden', '');
+              }
+            }, 300);
+          } else {
+            // Open current
+            content.removeAttribute('hidden');
+            item.classList.add('active');
+            trigger.setAttribute('aria-expanded', 'true');
+            // Animate max-height based on scrollHeight
+            content.style.maxHeight = content.scrollHeight + 'px';
+          }
+        });
+      }
+    });
+  }
+
+  // Run on load and after client-side navigation
+  setupFaqs();
+  document.addEventListener('astro:after-swap', setupFaqs);
+</script>

@@ -1,0 +1,57 @@
+{
+  "title": "Automatización de CRM (HubSpot, Salesforce y Zoho) | proasc",
+  "metaDescription": "Optimiza la gestión de tus ventas. Automatiza el embudo de tu CRM, la asignación de leads, alertas de seguimiento y reportes de conversión.",
+  "serviceType": "Automatización de CRM",
+  "h1": "Automatiza tu CRM y Aumenta tus Ventas",
+  "subtitle": "Conecta tus canales de captación al CRM. Asignación inteligente de leads, tareas automáticas y pipelines optimizados.",
+  "intro": "Tu CRM debe ser una máquina de ventas, no una carga administrativa. Diseñamos automatizaciones que se encargan de registrar cada lead de WhatsApp o web, asignarlo al vendedor correspondiente según reglas comerciales, programar recordatorios de tareas y enviar correos de seguimiento sin intervención de tu equipo.",
+  "benefits": [
+    {
+      "title": "Asignación Eficiente",
+      "description": "Distribuye leads automáticamente entre tu equipo de ventas según su carga de trabajo o especialidad.",
+      "icon": "fa-solid fa-users"
+    },
+    {
+      "title": "Seguimientos en Piloto Automático",
+      "description": "Dispara alertas de WhatsApp y correos electrónicos automáticos cuando un prospecto cambie de etapa en el embudo.",
+      "icon": "fa-solid fa-arrows-spin"
+    },
+    {
+      "title": "Métricas Claras",
+      "description": "Registra el origen, tiempo de atención y tasas de conversión de cada contacto de forma centralizada.",
+      "icon": "fa-solid fa-chart-line"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": 1,
+      "title": "Configuración del Pipeline",
+      "description": "Estructuramos las etapas lógicas de tu embudo de ventas en el CRM."
+    },
+    {
+      "step": 2,
+      "title": "Integración de Canales",
+      "description": "Conectamos formularios, campañas publicitarias y WhatsApp para capturar los leads directamente."
+    },
+    {
+      "step": 3,
+      "title": "Automatización de Tareas",
+      "description": "Programamos los triggers de asignación, correos de bienvenida y recordatorios comerciales."
+    }
+  ],
+  "cases": [
+    {
+      "title": "Inmobiliaria Norte",
+      "description": "Sincronización automatizada de leads capturados en WhatsApp con el pipeline de ventas.",
+      "result": "Registro instantáneo y reducción a cero de contactos no cargados.",
+      "clientSlug": "caso-inmobiliaria-norte"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "¿Con qué CRMs trabajan?",
+      "answer": "Principalmente con HubSpot, Salesforce, Zoho CRM, Kommo y Pipedrive, aunque podemos integrarnos con cualquier plataforma mediante webhooks y APIs."
+    }
+  ],
+  "conversionGoal": "submit-form"
+}

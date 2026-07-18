@@ -1,0 +1,58 @@
+{
+  "title": "Automatización WhatsApp para Ecommerce y Tiendas Online | proasc",
+  "metaDescription": "Automatiza pedidos, consultas de stock, seguimiento de envíos y recuperación de carritos abandonados por WhatsApp para tu tienda online.",
+  "serviceType": "Automatización para Ecommerce",
+  "h1": "Automatiza tu Ecommerce y Aumenta las Ventas por WhatsApp",
+  "subtitle": "Recupera carritos abandonados, confirma pedidos y resuelve consultas de envío automáticamente. Vende más sin aumentar tu equipo.",
+  "intro": "El canal de WhatsApp es hoy el mayor generador de ventas para ecommerce en Latinoamérica. Diseñamos flujos automáticos que recuperan carritos abandonados con mensajes personalizados, confirman pedidos en tiempo real, rastrean envíos de forma automática y resuelven reclamaciones sin que tu equipo de soporte necesite intervenir.",
+  "benefits": [
+    {
+      "title": "Recuperación de Carritos",
+      "description": "El sistema detecta carritos abandonados y envía mensajes automáticos con descuentos o recordatorios para retomar la compra.",
+      "icon": "fa-solid fa-cart-arrow-down"
+    },
+    {
+      "title": "Tracking de Envíos en Tiempo Real",
+      "description": "El cliente consulta el estado de su pedido por WhatsApp y el bot responde automáticamente con el número de seguimiento actualizado.",
+      "icon": "fa-solid fa-truck-fast"
+    },
+    {
+      "title": "Campañas de Retención",
+      "description": "Envía promociones segmentadas y mensajes de reactivación a compradores anteriores mediante la API oficial de WhatsApp Cloud.",
+      "icon": "fa-solid fa-bullhorn"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": 1,
+      "title": "Conexión con la Plataforma",
+      "description": "Integramos el sistema con tu plataforma de ecommerce (Shopify, WooCommerce, TiendaNube, etc.) mediante webhooks."
+    },
+    {
+      "step": 2,
+      "title": "Configuración de Disparadores",
+      "description": "Definimos los eventos que activan mensajes: carrito abandonado, pedido confirmado, envío despachado, etc."
+    },
+    {
+      "step": 3,
+      "title": "Flujo de Soporte Postventa",
+      "description": "El bot maneja cambios, devoluciones y consultas de seguimiento automáticamente, escalando solo los casos complejos."
+    }
+  ],
+  "cases": [],
+  "faqs": [
+    {
+      "question": "¿Funciona con TiendaNube o Shopify?",
+      "answer": "Sí, podemos integrarnos con TiendaNube, Shopify, WooCommerce y cualquier plataforma que ofrezca webhooks o API REST."
+    },
+    {
+      "question": "¿Cómo se manejan los reclamos o devoluciones?",
+      "answer": "El bot recoge la información del reclamo (número de pedido, motivo, foto del producto), crea un ticket y notifica a tu equipo para resolver en menos de 24 hs."
+    },
+    {
+      "question": "¿Las campañas masivas pueden provocar bloqueo del número?",
+      "answer": "No, trabajamos exclusivamente con la API oficial de WhatsApp Business Cloud. Los mensajes masivos se envían mediante plantillas aprobadas por Meta, eliminando el riesgo de bloqueo."
+    }
+  ],
+  "conversionGoal": "submit-form"
+}

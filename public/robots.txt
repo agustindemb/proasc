@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Directives for well-known crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap location
+Sitemap: https://proasc.co/sitemap-index.xml

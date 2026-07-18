@@ -1,0 +1,114 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const caseEntries = await getCollection('cases');
+  return caseEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const data = entry.data;
+
+// Render Markdown
+const { Content } = await entry.render();
+
+const breadcrumbs = [
+  { name: "Inicio", url: "/" },
+  { name: "Casos de Éxito", url: "/#workflow" }, // Redirects to workflow/demos on home
+  { name: data.client, url: `/casos/${entry.slug}` }
+];
+
+const caseSchemaData = {
+  title: data.title,
+  description: data.description,
+  client: data.client,
+  image: data.image
+};
+---
+
+<Layout
+  title={`${data.title} | Casos proasc`}
+  description={data.description}
+  seoType="Article"
+  schemaData={caseSchemaData}
+  breadcrumbs={breadcrumbs}
+  conversionGoal="submit-form"
+>
+  <div class="container" style="padding-top: 140px; padding-bottom: 6rem; max-width: 900px;">
+    
+    <header style="margin-bottom: 3rem; text-align: left;">
+      <span style="background: rgba(0, 242, 254, 0.08); border: 1px solid rgba(0, 242, 254, 0.15); color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 50px; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.5px;">
+        Caso de Éxito de Automatización
+      </span>
+      
+      <h1 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 1.5rem;">
+        {data.title}
+      </h1>
+      
+      <div style="font-size: 0.9rem; color: var(--text-muted); border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 1.5rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
+        <div>Cliente: <strong style="color: #fff;">{data.client}</strong></div>
+        <div>Publicado: <strong style="color: #fff;">{data.publishDate}</strong></div>
+        {data.serviceSlug && (
+          <div>Servicio: <a href={`/${data.serviceSlug}`} style="color: var(--primary); text-decoration: none;">Ver Servicio</a></div>
+        )}
+        {data.industrySlug && (
+          <div>Industria: <a href={`/${data.industrySlug}`} style="color: var(--secondary); text-decoration: none;">Ver Industria</a></div>
+        )}
+      </div>
+    </header>
+
+    <!-- Metrics Highlights Box -->
+    {data.metrics && data.metrics.length > 0 && (
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+        {data.metrics.map((metric) => (
+          <div class="glass-card" style="padding: 1.8rem; border-radius: 12px; text-align: center; border-color: rgba(0, 242, 254, 0.15);">
+            <div style="font-size: 2.2rem; font-weight: 800; color: var(--primary); font-family: 'Space Grotesk', sans-serif; margin-bottom: 0.25rem;">
+              {metric.value}
+            </div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">
+              {metric.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+
+    <!-- Main Content Area -->
+    <div style="display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: start;">
+      
+      <!-- Article Markdown Content -->
+      <article class="markdown-body">
+        <Content />
+      </article>
+
+      <!-- Testimonial Card Block -->
+      {data.quote && (
+        <div class="glass-card" style="padding: 2.5rem; border-radius: 16px; border-left: 4px solid var(--secondary); background: rgba(155, 81, 224, 0.02); margin-top: 2rem;">
+          <i class="fa-solid fa-quote-left" style="font-size: 2rem; color: var(--secondary); opacity: 0.3; display: block; margin-bottom: 1rem;"></i>
+          <p style="font-size: 1.1rem; font-style: italic; color: #fff; line-height: 1.6; margin-bottom: 1.5rem;">
+            "{data.quote.text}"
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 0.25rem;">
+            <strong style="color: #fff; font-size: 0.95rem;">{data.quote.author}</strong>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">{data.quote.role}</span>
+          </div>
+        </div>
+      )}
+    </div>
+
+    <!-- Final CTA Area -->
+    <div style="margin-top: 5rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; display: flex; flex-direction: column; gap: 1.5rem; align-items: center;">
+      <h3 style="font-size: 1.8rem; color: #fff; font-family: 'Space Grotesk', sans-serif;">¿Quieres obtener resultados similares en tu empresa?</h3>
+      <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 600px; margin: 0;">Diseñamos e implementamos sistemas de automatización a medida y garantizados contra cuellos de botella.</p>
+      
+      <a href="/#contact" class="btn btn-primary" style="margin-top: 1rem;">
+        Quiero automatizar mi empresa <i class="fa-solid fa-rocket"></i>
+      </a>
+    </div>
+
+  </div>
+</Layout>

@@ -1,0 +1,58 @@
+{
+  "title": "Automatización de WhatsApp para Estudios Contables | proasc",
+  "metaDescription": "Automatiza la comunicación de tu estudio contable por WhatsApp. Responde consultas frecuentes, agenda reuniones y envía alertas de vencimientos automáticamente.",
+  "serviceType": "Automatización para Estudios Contables",
+  "h1": "Automatiza la Gestión de Clientes de tu Estudio Contable",
+  "subtitle": "Responde consultas fiscales repetitivas, agenda reuniones y envía alertas de vencimiento impositivo sin intervención manual.",
+  "intro": "Los estudios contables enfrentan un volumen constante de mensajes repetitivos: ¿Cuándo vence mi declaración? ¿Subiste mis facturas? ¿Cómo calculo el monotributo? Diseñamos asistentes automáticos que responden estas consultas al instante, filtran los casos complejos para tus contadores y te liberan tiempo para el trabajo de alto valor.",
+  "benefits": [
+    {
+      "title": "Alertas de Vencimientos Impositivos",
+      "description": "El sistema envía automáticamente recordatorios de vencimiento de AFIP, ingresos brutos y declaraciones a cada cliente según su cronograma fiscal.",
+      "icon": "fa-solid fa-calendar-exclamation"
+    },
+    {
+      "title": "Respuestas de Consultas Frecuentes",
+      "description": "FAQ automáticas sobre monotributo, responsable inscripto, categorías, facturación electrónica y más, sin ocupar tiempo de tus profesionales.",
+      "icon": "fa-solid fa-circle-question"
+    },
+    {
+      "title": "Recepción Digitalizada de Documentación",
+      "description": "Guía a los clientes para enviar facturas, recibos y comprobantes directamente por WhatsApp y los organiza en carpetas digitales en Google Drive.",
+      "icon": "fa-solid fa-folder-open"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": 1,
+      "title": "Carga del Calendario Fiscal",
+      "description": "Cargamos los vencimientos impositivos del año y los perfiles de cada cliente en el sistema."
+    },
+    {
+      "step": 2,
+      "title": "Activación del Asistente",
+      "description": "El bot responde consultas automáticas y dispara alertas personalizadas a cada cliente en las fechas correctas."
+    },
+    {
+      "step": 3,
+      "title": "Registro de Documentación",
+      "description": "Los documentos enviados por los clientes se almacenan de forma organizada en Drive y se notifica al contador asignado."
+    }
+  ],
+  "cases": [],
+  "faqs": [
+    {
+      "question": "¿El bot puede responder preguntas específicas de impuestos de mi país?",
+      "answer": "Sí. Entrenamos la base de conocimientos del asistente con la normativa fiscal vigente de tu jurisdicción (Argentina: AFIP, ARCA, AGIP, etc.) y con las preguntas frecuentes reales de tu cartera de clientes."
+    },
+    {
+      "question": "¿Se puede personalizar para cada cliente del estudio?",
+      "answer": "Absolutamente. Cada cliente puede recibir recordatorios y respuestas personalizadas según su categoría tributaria, régimen y vencimientos propios."
+    },
+    {
+      "question": "¿El sistema interfiere con el software de liquidación que ya uso?",
+      "answer": "No. El asistente de WhatsApp opera de forma independiente y puede conectarse opcionalmente a tu software de gestión contable mediante APIs o lectura de hojas de cálculo."
+    }
+  ],
+  "conversionGoal": "submit-form"
+}

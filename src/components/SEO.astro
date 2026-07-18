@@ -1,0 +1,199 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  seoType?: 'WebSite' | 'Service' | 'BlogPosting' | 'Article' | 'ProfessionalService' | 'WebPage';
+  schemaData?: any;
+  canonicalUrl?: string;
+  ogImage?: string;
+  breadcrumbs?: Array<{ name: string; url: string }>;
+}
+
+const {
+  title,
+  description,
+  seoType = 'WebPage',
+  schemaData,
+  canonicalUrl,
+  ogImage,
+  breadcrumbs
+} = Astro.props;
+
+const siteUrl = 'https://proasc.co';
+const currentUrl = canonicalUrl || `${siteUrl}${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`;
+const defaultOgImage = `${siteUrl}/logo.png`;
+const resolvedOgImage = ogImage ? (ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage.startsWith('/') ? '' : '/'}${ogImage}`) : defaultOgImage;
+
+// Helper to construct BreadcrumbList JSON-LD Schema
+const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": breadcrumbs.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": item.name,
+    "item": item.url.startsWith('http') ? item.url : `${siteUrl}${item.url}`
+  }))
+} : null;
+
+// Helper to construct page-specific schemas
+let pageSchema: any = null;
+
+if (seoType === 'ProfessionalService') {
+  // Home page schema
+  pageSchema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "@id": `${siteUrl}/#organization`,
+      "name": "proasc",
+      "alternateName": "ASC (Automation System Company)",
+      "url": siteUrl,
+      "logo": defaultOgImage,
+      "image": defaultOgImage,
+      "description": "Desarrollo de asistentes conversacionales con Inteligencia Artificial, integraciones de WhatsApp Business API y automatizaciones de procesos de backend.",
+      "telephone": "+5491138927598",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Buenos Aires",
+        "addressLocality": "Buenos Aires",
+        "addressCountry": "AR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -34.6037,
+        "longitude": -58.3816
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Argentina"
+      },
+      "sameAs": [
+        "https://www.instagram.com/asc.automations/",
+        "https://linkedin.com"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      "name": "proasc",
+      "url": siteUrl
+    }
+  ];
+} else if (seoType === 'Service' && schemaData) {
+  // Service / Industry landings schema
+  pageSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": schemaData.title || title,
+    "description": schemaData.description || description,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "proasc",
+      "url": siteUrl,
+      "logo": defaultOgImage,
+      "telephone": "+5491138927598",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Buenos Aires",
+        "addressCountry": "AR"
+      }
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Argentina"
+    },
+    "serviceType": schemaData.serviceType || schemaData.title || title
+  };
+} else if (seoType === 'BlogPosting' && schemaData) {
+  // Blog post schema
+  pageSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": currentUrl
+    },
+    "headline": schemaData.title,
+    "description": schemaData.description || description,
+    "image": schemaData.image ? `${siteUrl}${schemaData.image}` : defaultOgImage,
+    "datePublished": schemaData.publishDate,
+    "dateModified": schemaData.updateDate || schemaData.publishDate,
+    "author": {
+      "@type": "Person",
+      "name": schemaData.author || "Sistemas ASC",
+      "url": schemaData.authorLinkedin || "https://linkedin.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "proasc",
+      "logo": {
+        "@type": "ImageObject",
+        "url": defaultOgImage
+      }
+    }
+  };
+} else if (seoType === 'Article' && schemaData) {
+  // Case Study / Article Schema
+  pageSchema = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": currentUrl
+    },
+    "headline": schemaData.title,
+    "description": schemaData.description || description,
+    "image": schemaData.image ? `${siteUrl}${schemaData.image}` : defaultOgImage,
+    "publisher": {
+      "@type": "Organization",
+      "name": "proasc",
+      "logo": {
+        "@type": "ImageObject",
+        "url": defaultOgImage
+      }
+    },
+    "about": {
+      "@type": "Thing",
+      "name": schemaData.client || "Caso de Éxito de Automatización"
+    }
+  };
+}
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={currentUrl} />
+
+<!-- OpenGraph Meta Tags -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content={seoType === 'BlogPosting' || seoType === 'Article' ? 'article' : 'website'} />
+<meta property="og:url" content={currentUrl} />
+<meta property="og:image" content={resolvedOgImage} />
+<meta property="og:site_name" content="proasc" />
+<meta property="og:locale" content="es_AR" />
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={resolvedOgImage} />
+
+<!-- Breadcrumb Schema -->
+{breadcrumbSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+)}
+
+<!-- Page-specific Schema -->
+{pageSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(pageSchema)}></script>
+)}

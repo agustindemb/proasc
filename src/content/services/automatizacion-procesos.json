@@ -1,0 +1,50 @@
+{
+  "title": "Automatización de Procesos Backend y Flujos de Datos | proasc",
+  "metaDescription": "Elimina tareas manuales repetitivas en tu backend. Automatización de reportes, sincronización de sistemas e integraciones de API personalizadas.",
+  "serviceType": "Automatización de Procesos",
+  "h1": "Automatización de Procesos Operativos y Backend",
+  "subtitle": "Conecta tus sistemas de información y elimina las tareas de copiar y pegar entre herramientas digitales.",
+  "intro": "Cada hora que tu equipo pasa copiando datos de una planilla a un CRM o generando reportes en PDF a mano es una hora perdida. Desarrollamos tuberías de datos seguras que automatizan la sincronización entre bases de datos, pasarelas de pago, CRMs y sistemas ERP de forma instantánea.",
+  "benefits": [
+    {
+      "title": "Cero Errores Humanos",
+      "description": "La transferencia de datos entre tus plataformas se realiza de forma exacta, eliminando descuidos tipográficos.",
+      "icon": "fa-solid fa-circle-check"
+    },
+    {
+      "title": "Ahorro de Tiempo Extremo",
+      "description": "Automatiza procesos que tardan horas diarias en completarse manualmente, resolviéndolos en segundos.",
+      "icon": "fa-solid fa-hourglass-half"
+    },
+    {
+      "title": "Reportes Dinámicos",
+      "description": "Generación automática de PDFs de rendimiento y alertas de correo para la toma de decisiones.",
+      "icon": "fa-solid fa-file-invoice"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": 1,
+      "title": "Auditoría de Procesos",
+      "description": "Analizamos tus flujos de trabajo actuales para identificar cuellos de botella y pasos repetitivos."
+    },
+    {
+      "step": 2,
+      "title": "Diseño de Tuberías",
+      "description": "Creamos integraciones personalizadas conectando webhooks y endpoints oficiales de API."
+    },
+    {
+      "step": 3,
+      "title": "Monitoreo y Alertas",
+      "description": "Establecemos sistemas de logs y notificaciones automáticas para validar la estabilidad 24/7."
+    }
+  ],
+  "cases": [],
+  "faqs": [
+    {
+      "question": "¿Qué tipo de herramientas pueden conectar?",
+      "answer": "Podemos conectar cualquier software con una API disponible (abierta o propietaria). Esto incluye CRMs, ERPs, Google Sheets, Stripe, pasarelas de pago locales, gestores de tareas y bases de datos SQL/NoSQL."
+    }
+  ],
+  "conversionGoal": "submit-form"
+}

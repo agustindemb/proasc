@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const breadcrumbs = [
+  { name: "Inicio", url: "/" },
+  { name: "Términos y Condiciones", url: "/terminos-condiciones" }
+];
+---
+
+<Layout
+  title="Términos y Condiciones | proasc"
+  description="Conoce los términos y condiciones bajo los cuales proasc (ASC) desarrolla e implementa software de automatización y servicios conversacionales."
+  seoType="WebPage"
+  breadcrumbs={breadcrumbs}
+>
+  <section style="padding-top: 140px; padding-bottom: 5rem;">
+    <div class="container" style="max-width: 800px; line-height: 1.8; color: var(--text-muted);">
+      <h1 class="section-title" style="text-align: left; margin-bottom: 2rem; color: #fff; font-size: 2.5rem;">Términos y Condiciones</h1>
+      
+      <p style="margin-bottom: 1.5rem; color: var(--text);">Fecha de entrada en vigor: 18 de Julio de 2026</p>
+      
+      <p style="margin-bottom: 1.5rem;">
+        Bienvenido a <strong>proasc (ASC - Automation System Company)</strong>. Al acceder a nuestro sitio web, rellenar formularios o contratar nuestros servicios de desarrollo e implementación de software, aceptas cumplir y estar sujeto a los siguientes términos y condiciones.
+      </p>
+
+      <h2 style="color: #fff; font-size: 1.5rem; margin: 2rem 0 1rem 0; font-family: 'Space Grotesk', sans-serif;">1. Objeto de los Servicios</h2>
+      <p style="margin-bottom: 1.5rem;">
+        proasc provee servicios de diseño, desarrollo, consultoría e instalación de:
+      </p>
+      <ul style="margin-left: 2rem; margin-bottom: 1.5rem; list-style-type: disc;">
+        <li>Asistentes conversacionales inteligentes (Chatbots) integrados con modelos de lenguaje.</li>
+        <li>Conexión de WhatsApp Business Cloud API.</li>
+        <li>Tuberías de datos, integraciones de backend y automatizaciones de flujos de trabajo (utilizando n8n, Make u otros servicios).</li>
+      </ul>
+
+      <h2 style="color: #fff; font-size: 1.5rem; margin: 2rem 0 1rem 0; font-family: 'Space Grotesk', sans-serif;">2. Propiedad Intelectual del Software</h2>
+      <p style="margin-bottom: 1.5rem;">
+        Excepto pacto en contrario por escrito, todo desarrollo de flujos a medida y scripts personalizados construidos para el Cliente será de su propiedad exclusiva una vez liquidado el costo de desarrollo acordado (Setup). ASC retiene los derechos de propiedad intelectual sobre sus módulos base prefabricados y arquitecturas propietarias.
+      </p>
+
+      <h2 style="color: #fff; font-size: 1.5rem; margin: 2rem 0 1rem 0; font-family: 'Space Grotesk', sans-serif;">3. Consumos e Infraestructura de Terceros</h2>
+      <p style="margin-bottom: 1.5rem;">
+        El Cliente comprende y acepta que el uso de APIs externas (como Meta Cloud API, OpenAI API, Gemini API, hosting, etc.) puede generar costos mensuales basados en consumo adicionales a la suscripción mensual de soporte de proasc. Dichos costos serán facturados directamente por los proveedores externos o incluidos según el plan contratado.
+      </p>
+
+      <h2 style="color: #fff; font-size: 1.5rem; margin: 2rem 0 1rem 0; font-family: 'Space Grotesk', sans-serif;">4. Responsabilidad</h2>
+      <p style="margin-bottom: 1.5rem;">
+        ASC no se responsabiliza por:
+      </p>
+      <ul style="margin-left: 2rem; margin-bottom: 1.5rem; list-style-type: disc;">
+        <li>Bloqueos, suspensiones o penalizaciones de números telefónicos por parte de Meta si el Cliente realiza envíos masivos no autorizados o viola las políticas de WhatsApp.</li>
+        <li>Fallas de conectividad, caídas del servicio de APIs externas de terceros o caídas del hosting contratado.</li>
+      </ul>
+
+      <h2 style="color: #fff; font-size: 1.5rem; margin: 2rem 0 1rem 0; font-family: 'Space Grotesk', sans-serif;">5. Modificaciones</h2>
+      <p style="margin-bottom: 1.5rem;">
+        Nos reservamos el derecho de modificar estos términos en cualquier momento. El uso continuado de nuestros sitios y servicios constituirá tu aceptación de los nuevos términos.
+      </p>
+    </div>
+  </section>
+</Layout>

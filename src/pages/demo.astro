@@ -1,15 +1,55 @@
+---
+import SEO from '../components/SEO.astro';
+
+const title = "proasc | Demo Inmersiva 3D - Tu Próxima Web";
+const description = "Fusionamos diseño visual inmersivo 3D de vanguardia con un rendimiento ultrarrápido sin dependencias. Atrae clientes con experiencias interactivas.";
+const breadcrumbs = [
+  { name: "Inicio", url: "/" },
+  { name: "Demo 3D", url: "/demo" }
+];
+---
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>proasc | Demo Inmersiva 3D - Tu Próxima Web</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="shortcut icon" href="/logo.png" type="image/x-icon">
   
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
   
+  <!-- SEO Meta Tags & Schema -->
+  <SEO
+    title={title}
+    description={description}
+    seoType="WebPage"
+    breadcrumbs={breadcrumbs}
+  />
+
+  <!-- Global Site Tag (gtag.js) - Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" is:inline></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript" is:inline>
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xxxxxxxxxx");
+  </script>
+
   <style>
     :root {
       --bg: #030712;
@@ -272,7 +312,7 @@
       transform: translateZ(20px);
     }
 
-    /* Hover card dynamic styles */
+    /* Hover card styles */
     .tilt-card:hover {
       border-color: rgba(0, 242, 254, 0.35);
       box-shadow: 0 20px 40px -15px rgba(0, 242, 254, 0.15);
@@ -463,7 +503,6 @@
       }
     }
 
-    /* Responsive adjustment for mobile */
     @media (max-width: 520px) {
       .floating-whatsapp-btn {
         bottom: 20px;
@@ -475,7 +514,7 @@
     }
   </style>
 </head>
-<body>
+<body data-conversion-goal="whatsapp-cta">
 
   <!-- Ambient Glows -->
   <div class="bg-glows">
@@ -488,11 +527,11 @@
 
   <!-- Navigation Header -->
   <header>
-    <a href="index.html" class="logo-back">
+    <a href="/" class="logo-back">
       <i class="fa-solid fa-arrow-left"></i>
       <span>proasc</span>
     </a>
-    <a href="index.html" class="btn-back-main">Volver</a>
+    <a href="/" class="btn-back-main">Volver</a>
   </header>
 
   <!-- Main Showcase Content -->
@@ -559,17 +598,17 @@
 
     <!-- CTA Section -->
     <div class="cta-container">
-      <a href="index.html#contact" class="btn-cta">
+      <a href="/#contact" class="btn-cta">
         <span>Quiero una Web como esta</span>
         <i class="fa-solid fa-arrow-right"></i>
       </a>
-      <span class="cta-note">¿Quieres ver más planes? Consulta nuestra sección de <a href="precios.html">Precios</a>.</span>
+      <span class="cta-note">¿Quieres ver más planes? Consulta nuestra sección de <a href="/precios">Precios</a>.</span>
     </div>
   </main>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2026 ASC (Automation System Company). Renderizado nativo optimizado.</p>
+    <p>&copy; {new Date().getFullYear()} ASC (Automation System Company). Renderizado nativo optimizado.</p>
   </footer>
 
   <!-- Floating WhatsApp Button -->
@@ -578,7 +617,7 @@
   </a>
 
   <!-- 3D Engine & Interactive Logic -->
-  <script>
+  <script is:inline>
     // --- 1. Custom 3D Particle Sphere Renderer (Pure Native Vanilla JS) ---
     const canvas = document.getElementById('background-3d');
     const ctx = canvas.getContext('2d');
@@ -618,7 +657,6 @@
       }
 
       project(cx, cy) {
-        // 3D perspective projection formula
         const scale = fov / (fov + this.z);
         const projX = this.x * scale + cx;
         const projY = this.y * scale + cy;
@@ -647,7 +685,6 @@
     let rotY = 0.003;
 
     window.addEventListener('mousemove', (e) => {
-      // Calculate offset speed from screen center
       const dx = (e.clientX - centerX) / centerX;
       const dy = (e.clientY - centerY) / centerY;
       
@@ -699,7 +736,6 @@
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 120) {
             const force = (120 - dist) / 120;
-            // Push particle in 3D coordinate space slightly
             x1 -= (dx / dist) * force * 15;
             y2 -= (dy / dist) * force * 15;
           }
@@ -718,8 +754,6 @@
       // Render particles & connect close points with thin glow wires
       for (let i = 0; i < projected.length; i++) {
         const p1 = projected[i];
-        
-        // Fade out points that are far behind
         const opacity = Math.max(0.1, Math.min(0.9, (fov - p1.depth) / (fov * 1.5)));
         
         ctx.beginPath();
@@ -743,7 +777,6 @@
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            // Depth fading color bridge
             const bridgeColor = p1.depth < 0 ? 'rgba(0, 242, 254,' : 'rgba(155, 81, 224,';
             ctx.strokeStyle = `${bridgeColor} ${0.12 * (1 - distance / 85)})`;
             ctx.lineWidth = 0.5;
@@ -757,7 +790,7 @@
       const time = performance.now();
       if (time >= lastTime + 500) {
         fpsVal = ((frames * 1000) / (time - lastTime)).toFixed(1);
-        fpsElement.textContent = fpsVal;
+        if (fpsElement) fpsElement.textContent = fpsVal;
         frames = 0;
         lastTime = time;
       }
@@ -774,29 +807,24 @@
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         
-        // Mouse positions relative to the card dimensions
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
         
-        // Calculate center coordinate offsets (-0.5 to 0.5)
         const xc = rect.width / 2;
         const yc = rect.height / 2;
         const dx = (x - xc) / xc;
-        const dy = (yc - y) / yc; // inverted Y
+        const dy = (yc - y) / yc;
 
-        // Tilt angle bounds (max 12 deg tilt)
         const tiltX = dy * 12;
         const tiltY = dx * 12;
 
         card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.03, 1.03, 1.03)`;
         
-        // Set CSS custom variables for reflection glow positional track
         card.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
         card.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
       });
 
       card.addEventListener('mouseleave', () => {
-        // Smoothly restore default layout positions
         card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
         card.style.setProperty('--mouse-x', '50%');
         card.style.setProperty('--mouse-y', '50%');

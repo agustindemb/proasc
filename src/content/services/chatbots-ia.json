@@ -1,0 +1,65 @@
+{
+  "title": "Chatbots con Inteligencia Artificial Conversacional | proasc",
+  "metaDescription": "Implementa chatbots de IA avanzados entrenados con la base de conocimientos de tu empresa. Respuestas contextuales y precisas en lenguaje natural.",
+  "serviceType": "Chatbots de IA",
+  "h1": "Chatbots de IA Entrenados para tu Negocio",
+  "subtitle": "Brinda soporte y ventas con inteligencia artificial conversacional avanzada. Comprensión semántica, memoria de chat y respuestas precisas.",
+  "intro": "Lleva la atención al cliente al siguiente nivel. Desarrollamos asistentes de IA que entienden el contexto, aprenden de tus manuales de producto, PDFs y documentos internos para responder con total precisión a tus clientes en lenguaje natural, simulando una conversación humana fluida.",
+  "benefits": [
+    {
+      "title": "Memoria de Contexto",
+      "description": "Nuestros agentes conversacionales recuerdan los mensajes anteriores en la misma sesión para dar respuestas coherentes y lógicas.",
+      "icon": "fa-solid fa-brain"
+    },
+    {
+      "title": "Entrenamiento con tus Datos",
+      "description": "Entrenamos la IA con tus preguntas frecuentes, listas de precios, políticas de reembolso y catálogos de servicios.",
+      "icon": "fa-solid fa-file-pdf"
+    },
+    {
+      "title": "Extracción Automática",
+      "description": "La IA identifica nombres, emails, teléfonos e intenciones de compra dentro del texto libre y los estructura automáticamente para tu equipo.",
+      "icon": "fa-solid fa-database"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": 1,
+      "title": "Carga de Conocimiento",
+      "description": "Estructuramos tus documentos, preguntas y bases de datos en un motor vectorial de IA."
+    },
+    {
+      "step": 2,
+      "title": "Entrenamiento y Pruebas",
+      "description": "Afinamos el tono, personalidad y límites del agente conversacional para garantizar respuestas seguras."
+    },
+    {
+      "step": 3,
+      "title": "Despliegue y Aprendizaje",
+      "description": "Publicamos el bot en tu web o WhatsApp. El sistema aprende continuamente de las interacciones reales."
+    }
+  ],
+  "cases": [
+    {
+      "title": "Inmobiliaria Norte",
+      "description": "El asistente responde dudas sobre requisitos de alquileres basándose en PDFs del contrato tipo.",
+      "result": "Reducción del 60% en correos de soporte repetitivos.",
+      "clientSlug": "caso-inmobiliaria-norte"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "¿La IA puede dar respuestas incorrectas (alucinaciones)?",
+      "answer": "Implementamos restricciones estrictas de contexto (system prompts y bases vectoriales acotadas). Si el bot no conoce la respuesta en tus documentos, responderá educadamente que no tiene esa información y ofrecerá derivar a un humano."
+    },
+    {
+      "question": "¿Qué modelos de lenguaje utilizan?",
+      "answer": "Trabajamos con modelos de última generación de Google (Gemini) y OpenAI (GPT), seleccionando el más adecuado según el presupuesto de tokens y la velocidad de respuesta requerida."
+    },
+    {
+      "question": "¿Se actualiza cuando cambio mis precios o servicios?",
+      "answer": "Sí. Estructuramos el sistema de forma que puedas actualizar la base de conocimientos (por ejemplo, editando una hoja de cálculo o cargando un nuevo PDF) y el bot asimilará los cambios al instante."
+    }
+  ],
+  "conversionGoal": "submit-form"
+}

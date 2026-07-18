@@ -1,0 +1,65 @@
+{
+  "title": "Automatización de WhatsApp para Inmobiliarias | proasc",
+  "metaDescription": "Optimiza la atención de tu inmobiliaria. Captura interesados, califica presupuestos y coordina visitas de propiedades por WhatsApp 24/7 de forma automática.",
+  "serviceType": "Automatización Inmobiliaria",
+  "h1": "Automatiza las Consultas de Propiedades por WhatsApp",
+  "subtitle": "Atiende interesados en alquileres y ventas, califica su presupuesto y agenda visitas físicas sin intervención humana 24/7.",
+  "intro": "El sector inmobiliario se mueve rápido. Cuando un interesado ve un portal y consulta por WhatsApp, cada minuto de retraso reduce las probabilidades de cierre. Diseñamos sistemas automáticos para inmobiliarias que atienden consultas de propiedades al instante, envían fichas técnicas, filtran inquilinos por ingresos y coordinan visitas físicas coordinadas con las agendas de tus martilleros.",
+  "benefits": [
+    {
+      "title": "Atención Inmediata de Leads",
+      "description": "Tu bot responde consultas de MercadoLibre, Zonaprop o tu web en menos de 5 segundos, entregando fotos y detalles de propiedades de inmediato.",
+      "icon": "fa-solid fa-clock"
+    },
+    {
+      "title": "Filtro Previo de Requisitos",
+      "description": "El sistema indaga sobre garantías, presupuesto y mascotas antes de transferir el cliente, ahorrando valioso tiempo a tus agentes comerciales.",
+      "icon": "fa-solid fa-filter"
+    },
+    {
+      "title": "Coordinación Automática de Citas",
+      "description": "Conectamos el bot con el calendario del agente inmobiliario (Google Calendar/Calendly) para que el prospecto calificado reserve su propio horario de visita.",
+      "icon": "fa-solid fa-calendar-days"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": 1,
+      "title": "Ingreso y Búsqueda",
+      "description": "El interesado escanea un QR en un cartel o hace clic en un anuncio de la propiedad."
+    },
+    {
+      "step": 2,
+      "title": "Calificación e Información",
+      "description": "El bot envía el PDF de la propiedad y verifica si el interesado cumple los requisitos de garantía y presupuesto."
+    },
+    {
+      "step": 3,
+      "title": "Reserva de Visita",
+      "description": "Si califica, el bot ofrece horarios libres para visitar la propiedad y agenda la cita en el CRM."
+    }
+  ],
+  "cases": [
+    {
+      "title": "Inmobiliaria Norte",
+      "description": "Implementación de chatbot calificador y agendador en WhatsApp Business.",
+      "result": "40% más de visitas concretadas y reducción drástica de consultas no calificadas.",
+      "clientSlug": "caso-inmobiliaria-norte"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "¿El chatbot puede buscar propiedades en mi base de datos?",
+      "answer": "Sí. Podemos integrar el bot con tu base de datos (por ejemplo, Tokko Broker, CRM inmobiliario propio o Google Sheets) para que busque y recomiende propiedades activas según presupuesto y zona."
+    },
+    {
+      "question": "¿Cómo se coordinan las visitas para que no se superpongan?",
+      "answer": "El bot lee en tiempo real el calendario de tus agentes. Solo muestra horarios libres reales y, al reservar, bloquea el horario al instante enviando un recordatorio por correo y WhatsApp."
+    },
+    {
+      "question": "¿Qué pasa si el cliente no cumple con las garantías requeridas?",
+      "answer": "El bot le informa amablemente sobre las alternativas de garantía aceptadas o, en su defecto, deriva el caso a revisión manual para no perder la oportunidad de venta."
+    }
+  ],
+  "conversionGoal": "submit-form"
+}

@@ -1,0 +1,178 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import FAQSection from '../components/FAQSection.astro';
+
+export async function getStaticPaths() {
+  const industryEntries = await getCollection('industries');
+  return industryEntries.map(entry => {
+    const slug = entry.id.replace(/\.[^/.]+$/, "");
+    return {
+      params: { industry: slug },
+      props: { entry, slug },
+    };
+  });
+}
+
+const { entry, slug } = Astro.props;
+const data = entry.data;
+
+// Fetch related case studies from the 'cases' collection
+const allCases = await getCollection('cases');
+const relatedCases = allCases.filter(c => c.data.industrySlug === slug);
+
+const breadcrumbs = [
+  { name: "Inicio", url: "/" },
+  { name: `Industria: ${data.serviceType}`, url: `/${slug}` }
+];
+
+const industrySchema = {
+  title: data.title,
+  description: data.metaDescription,
+  serviceType: data.serviceType
+};
+---
+
+<Layout
+  title={data.title}
+  description={data.metaDescription}
+  seoType="Service"
+  schemaData={industrySchema}
+  breadcrumbs={breadcrumbs}
+  conversionGoal={data.conversionGoal}
+>
+  <!-- Hero Section -->
+  <section style="padding-top: 140px; padding-bottom: 4rem; text-align: center; position: relative;">
+    <div class="container" style="max-width: 900px;">
+      <div class="reveal">
+        <span class="badge-new" style="margin: 0 auto 1.5rem auto; display: inline-flex; justify-content: center; gap: 0.5rem;">
+          <i class="fa-solid fa-building"></i> Solución Sectorial
+        </span>
+        <h1 class="hero-title" style="margin-bottom: 1.5rem; font-size: clamp(2.2rem, 5vw, 3.2rem);">
+          {data.h1}
+        </h1>
+        <p class="hero-desc" style="margin: 0 auto 2.5rem auto; font-size: 1.15rem; color: var(--text-muted);">
+          {data.subtitle}
+        </p>
+        <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+          <a href="#contact" class="btn btn-primary">Agendar Consultoría <i class="fa-solid fa-calendar-days"></i></a>
+          <a href="#benefits" class="btn btn-secondary" style="background: transparent; border-color: rgba(255,255,255,0.15);">Ver Funcionamiento <i class="fa-solid fa-arrow-down"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Segment -->
+  <section id="intro" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <div class="container" style="max-width: 800px; text-align: center;">
+      <div class="glass-card" style="padding: 2.5rem; border-radius: 16px; border-color: rgba(155, 81, 224, 0.15);">
+        <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text); margin: 0;">
+          {data.intro}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Grid -->
+  <section id="benefits" style="padding: 4rem 0; background: rgba(255,255,255,0.01); border-top: 1px solid rgba(255,255,255,0.02);">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
+        <span class="section-subtitle">Beneficios de la Industria</span>
+        <h2 class="section-title">Resultados Específicos para tu Sector</h2>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+        {data.benefits.map((benefit) => (
+          <div class="glass-card" style="padding: 2.5rem; border-radius: 16px; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--secondary)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size: 2rem; color: var(--secondary); margin-bottom: 1.5rem;">
+              <i class={benefit.icon}></i>
+            </div>
+            <h3 style="color: #fff; font-size: 1.3rem; margin-bottom: 0.75rem; font-family: 'Space Grotesk', sans-serif;">{benefit.title}</h3>
+            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="workflow" style="padding: 5rem 0;">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
+        <span class="section-subtitle">Implementación</span>
+        <h2 class="section-title">¿Cómo automatizamos tu sector?</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2.5rem; max-width: 1000px; margin: 0 auto; position: relative;">
+        {data.howItWorks.map((step) => (
+          <div class="glass-card" style="padding: 2.5rem; border-radius: 16px; position: relative;">
+            <div style="position: absolute; top: -20px; left: 25px; width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--secondary), var(--primary)); display: flex; align-items: center; justify-content: center; color: #030712; font-weight: 800; font-size: 1.1rem; border: 3px solid var(--bg);">
+              {step.step}
+            </div>
+            <h3 style="color: #fff; font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.75rem; font-family: 'Space Grotesk', sans-serif;">{step.title}</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Cases Section -->
+  {relatedCases.length > 0 && (
+    <section id="cases" style="padding: 5rem 0; background: rgba(255,255,255,0.01); border-top: 1px solid rgba(255,255,255,0.02);">
+      <div class="container" style="max-width: 900px;">
+        <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+          <span class="section-subtitle">Casos del Sector</span>
+          <h2 class="section-title">Proyectos en tu industria</h2>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 2rem;">
+          {relatedCases.map((c) => (
+            <div class="glass-card" style="padding: 2.5rem; border-radius: 16px; display: flex; flex-direction: column; gap: 1.5rem; border-color: rgba(0, 242, 254, 0.15);">
+              <div>
+                <span style="font-size: 0.8rem; color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Caso: {c.data.client}</span>
+                <h3 style="color: #fff; font-size: 1.4rem; margin-top: 0.25rem; font-family: 'Space Grotesk', sans-serif;">{c.data.title}</h3>
+                <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-top: 0.5rem;">{c.data.description}</p>
+              </div>
+              
+              <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; background: rgba(255,255,255,0.02); padding: 1rem 1.5rem; border-radius: 8px;">
+                {c.data.metrics.map(metric => (
+                  <div>
+                    <div style="font-size: 1.3rem; font-weight: 800; color: var(--secondary);">{metric.value}</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">{metric.label}</div>
+                  </div>
+                ))}
+              </div>
+              
+              <a href={`/casos/${c.slug}`} class="btn btn-secondary" style="width: fit-content; font-size: 0.85rem; padding: 0.5rem 1.2rem;">Leer Caso de Éxito <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- FAQ Accordion -->
+  <section id="faqs" style="padding: 5rem 0; border-top: 1px solid rgba(255,255,255,0.02);">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
+        <span class="section-subtitle">Dudas Comunes</span>
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+      </div>
+      
+      <FAQSection faqs={data.faqs} />
+    </div>
+  </section>
+
+  <!-- CTA Section / Form -->
+  <section id="contact" style="padding: 5rem 0; background: linear-gradient(180deg, transparent, rgba(155, 81, 224, 0.02)); border-top: 1px solid rgba(255,255,255,0.02);">
+    <div class="container" style="max-width: 600px; text-align: center; display: flex; flex-direction: column; gap: 1.5rem;">
+      <h2 style="font-size: 2.2rem; color: #fff; font-family: 'Space Grotesk', sans-serif;">¿Deseas implementar esto en tu empresa?</h2>
+      <p style="color: var(--text-muted); font-size: 1.05rem;">Conéctate con un especialista y diseñemos una prueba de concepto adaptada a tu flujo operativo actual.</p>
+      
+      <a href="https://wa.me/5491138927598?text=Hola!%20Me%20interesa%20la%20automatizacion%20inmobiliaria" class="btn btn-primary" style="margin: 1rem auto 0 auto; justify-content: center; width: fit-content; border-color: rgba(155, 81, 224, 0.4);">
+        Escribir por WhatsApp <i class="fa-brands fa-whatsapp"></i>
+      </a>
+    </div>
+  </section>
+</Layout>

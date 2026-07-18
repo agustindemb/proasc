@@ -1,0 +1,121 @@
+---
+import SEO from '../components/SEO.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import '../styles/styles.css';
+
+interface Props {
+  title: string;
+  description: string;
+  seoType?: 'WebSite' | 'Service' | 'BlogPosting' | 'Article' | 'ProfessionalService' | 'WebPage';
+  schemaData?: any;
+  canonicalUrl?: string;
+  ogImage?: string;
+  breadcrumbs?: Array<{ name: string; url: string }>;
+  conversionGoal?: string; // e.g. "submit-form", "whatsapp-cta", "download-resource"
+}
+
+const {
+  title,
+  description,
+  seoType = 'WebPage',
+  schemaData,
+  canonicalUrl,
+  ogImage,
+  breadcrumbs,
+  conversionGoal = 'submit-form'
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Preload fonts to avoid layout shifts (CLS) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="shortcut icon" href="/logo.png" type="image/x-icon">
+
+  <!-- Centralized SEO Component -->
+  <SEO
+    title={title}
+    description={description}
+    seoType={seoType}
+    schemaData={schemaData}
+    canonicalUrl={canonicalUrl}
+    ogImage={ogImage}
+    breadcrumbs={breadcrumbs}
+  />
+
+  <!-- Global Site Tag (gtag.js) - Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" is:inline></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript" is:inline>
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xxxxxxxxxx");
+  </script>
+</head>
+<body data-conversion-goal={conversionGoal}>
+
+  <!-- Background Glow & Grid Effects -->
+  <div class="background-layer">
+    <div class="radial-glow-1"></div>
+    <div class="radial-glow-2"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- Header -->
+  <Header />
+
+  <!-- Breadcrumbs navigation (for internal pages, not Home) -->
+  {breadcrumbs && breadcrumbs.length > 1 && (
+    <div class="container" style="padding-top: 100px; padding-bottom: 0;">
+      <Breadcrumbs items={breadcrumbs} />
+    </div>
+  )}
+
+  <!-- Main Slot -->
+  <main style={breadcrumbs && breadcrumbs.length > 1 ? "padding-top: 1rem;" : ""}>
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <Footer />
+
+  <!-- Floating Demo Button -->
+  <a href="/demo" class="floating-demo-btn" id="btn-floating-demo">
+    <i class="fa-solid fa-wand-magic-sparkles"></i>
+    <span>Tu próxima web</span>
+  </a>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/5491138927598?text=Hola!%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20automatizaciones%20de%20proasc." target="_blank" class="floating-whatsapp-btn" id="btn-floating-whatsapp" aria-label="Chatear por WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- Main JS -->
+  <script>
+    import '../scripts/script.js';
+  </script>
+</body>
+</html>

@@ -1,58 +1,34 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>proasc | Planes y Precios - Sistemas de Automatización</title>
-  
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Conoce los planes y precios de proasc. Desde soluciones básicas hasta asistentes con Inteligencia Artificial a medida e integraciones personalizadas.">
-  <meta name="keywords" content="precios chatbot, tarifas whatsapp, cotizaciones automatizacion, extras whatsapp, crm sheets integraciones">
-  <meta name="author" content="ASC">
-  
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- CSS Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+---
+import Layout from '../layouts/Layout.astro';
 
-  <!-- Background Glow & Grid Effects -->
-  <div class="background-layer">
-    <div class="radial-glow-1"></div>
-    <div class="radial-glow-2"></div>
-    <div class="grid-overlay"></div>
-  </div>
+// Structured data for products/pricing to pass to schema
+const pricingSchemaData = {
+  title: "Planes de Automatización proasc",
+  description: "Planes y precios de automatización de WhatsApp, agentes conversacionales de Inteligencia Artificial y flujos de backend.",
+  brand: "proasc",
+  offers: [
+    { name: "ASC START", price: "50", currency: "USD" },
+    { name: "ASC GROW", price: "120", currency: "USD" },
+    { name: "ASC AI", price: "250", currency: "USD" }
+  ]
+};
 
-  <!-- Header / Navigation -->
-  <header id="main-header">
-    <div class="container nav-container">
-      <a href="index.html#hero" class="logo" id="logo-brand">
-        <img src="logo.jpeg" alt="Logo de ASC Automations" class="logo-img">
-        <span class="logo-text">proasc</span>
-      </a>
-      
-      <ul class="nav-menu" id="navigation-menu">
-        <li><a href="index.html#hero" class="nav-link">Inicio</a></li>
-        <li><a href="index.html#whatsapp-demo" class="nav-link">Demo Chatbot</a></li>
-        <li><a href="index.html#services" class="nav-link">Servicios</a></li>
-        <li><a href="index.html#workflow" class="nav-link">Nuestro Flujo</a></li>
-        <li><a href="index.html#about" class="nav-link">Sobre ASC</a></li>
-        <li><a href="precios.html" class="nav-link nav-link-active" style="color: var(--primary);">Precios</a></li>
-        <li><a href="index.html#contact" class="nav-link">Contacto</a></li>
-      </ul>
-      
-      <a href="index.html#contact" class="nav-cta" id="nav-cta-btn">Crear Mi Sistema</a>
-      
-      <button class="mobile-nav-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">
-        <i class="fa-solid fa-bars"></i>
-      </button>
-    </div>
-  </header>
+const breadcrumbs = [
+  { name: "Inicio", url: "/" },
+  { name: "Precios", url: "/precios" }
+];
+---
 
+<Layout 
+  title="proasc | Planes y Precios - Sistemas de Automatización" 
+  description="Conoce los planes y precios de proasc. Desde soluciones básicas de WhatsApp hasta asistentes con Inteligencia Artificial a medida e integraciones personalizadas."
+  seoType="WebPage"
+  schemaData={pricingSchemaData}
+  breadcrumbs={breadcrumbs}
+  conversionGoal="whatsapp-cta"
+>
   <!-- Title Banner -->
-  <section id="pricing-hero" style="padding-top: 140px; padding-bottom: 2rem; text-align: center;">
+  <section id="pricing-hero" style="padding-top: 50px; padding-bottom: 2rem; text-align: center;">
     <div class="container">
       <div class="section-header reveal" style="margin-bottom: 2rem;">
         <span class="section-subtitle">Tarifas Transparentes</span>
@@ -99,7 +75,7 @@
             <p><i class="fa-solid fa-clock"></i> No perder consultas fuera de horario</p>
           </div>
           
-          <a href="index.html#contact" class="btn btn-secondary" style="margin-top: 1.5rem; justify-content: center; width: 100%;">Elegir Start</a>
+          <a href="/#contact" class="btn btn-secondary" style="margin-top: 1.5rem; justify-content: center; width: 100%;">Elegir Start</a>
         </div>
 
         <!-- CARD 2: ASC GROW (Destacado) -->
@@ -136,7 +112,7 @@
             <p><i class="fa-solid fa-chart-line"></i> Convertir más consultas en ventas</p>
           </div>
           
-          <a href="index.html#contact" class="btn btn-primary" style="margin-top: 1.5rem; justify-content: center; width: 100%;">Elegir Grow</a>
+          <a href="/#contact" class="btn btn-primary" style="margin-top: 1.5rem; justify-content: center; width: 100%;">Elegir Grow</a>
         </div>
 
         <!-- CARD 3: ASC AI (Destacado IA) -->
@@ -174,7 +150,7 @@
             <p><i class="fa-solid fa-up-right-and-down-left-from-center"></i> Escalabilidad infinita de soporte</p>
           </div>
           
-          <a href="index.html#contact" class="btn btn-secondary" style="margin-top: 1.5rem; justify-content: center; width: 100%; border-color: rgba(155, 81, 224, 0.4);">Elegir AI</a>
+          <a href="/#contact" class="btn btn-secondary" style="margin-top: 1.5rem; justify-content: center; width: 100%; border-color: rgba(155, 81, 224, 0.4);">Elegir AI</a>
         </div>
 
       </div>
@@ -330,69 +306,9 @@
       <h2 style="font-size: 2.2rem; color: #fff;">¿Listo para automatizar tu negocio?</h2>
       <p style="color: var(--text-muted); font-size: 1.05rem;">Envíanos tu consulta sobre qué plan y adicionales requieres y te armamos un presupuesto cerrado adaptado a tu operativa.</p>
       <div style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
-        <a href="index.html#contact" class="btn btn-primary">Solicitar Plan Personalizado <i class="fa-solid fa-paper-plane"></i></a>
+        <a href="/#contact" class="btn btn-primary">Solicitar Plan Personalizado <i class="fa-solid fa-paper-plane"></i></a>
         <a href="https://wa.me/5491138927598" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-whatsapp"></i> Chatear con Soporte</a>
       </div>
     </div>
   </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html#hero" class="logo" style="margin-bottom: 0.5rem;" id="footer-logo">
-          <img src="logo.jpeg" alt="Logo de ASC Automations" class="logo-img">
-          <span class="logo-text">proasc</span>
-        </a>
-        <p>ASC (Automation System Company) se especializa en asistentes conversacionales de IA, automatización para WhatsApp de empresas e integraciones de backend.</p>
-      </div>
-      
-      <div class="footer-links-col">
-        <h4>Navegación</h4>
-        <ul class="footer-links">
-          <li><a href="index.html#hero">Inicio</a></li>
-          <li><a href="index.html#whatsapp-demo">Demo Chatbot</a></li>
-          <li><a href="index.html#services">Servicios</a></li>
-          <li><a href="index.html#workflow">Nuestro Flujo</a></li>
-          <li><a href="index.html#about">Sobre ASC</a></li>
-          <li><a href="precios.html">Precios y Planes</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-newsletter">
-        <h4>Novedades</h4>
-        <p>Suscríbete para recibir plantillas de automatización y consejos de IA quincenales directamente en tu correo.</p>
-        <form class="newsletter-form" id="subscribe-newsletter-form">
-          <input type="email" class="newsletter-input" placeholder="correo@empresa.com" required id="newsletter-email-input">
-          <button type="submit" class="btn btn-primary btn-newsletter" id="newsletter-submit-btn">
-            Unirse
-          </button>
-        </form>
-      </div>
-    </div>
-    
-    <div class="container footer-bottom">
-      <p>&copy; 2026 ASC (Automation System Company). Todos los derechos reservados.</p>
-      <div class="social-links">
-        <a href="https://linkedin.com" target="_blank" class="social-link" id="social-lnk-linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="https://www.instagram.com/asc.automations/" target="_blank" class="social-link" id="social-lnk-instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://github.com" target="_blank" class="social-link" id="social-lnk-github"><i class="fa-brands fa-github"></i></a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Floating Demo Button -->
-  <a href="demo.html" class="floating-demo-btn" id="btn-floating-demo">
-    <i class="fa-solid fa-wand-magic-sparkles"></i>
-    <span>Tu próxima web</span>
-  </a>
-
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/5491138927598?text=Hola!%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20automatizaciones%20de%20proasc." target="_blank" class="floating-whatsapp-btn" id="btn-floating-whatsapp" aria-label="Chatear por WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
-
-  <!-- Main JavaScript File -->
-  <script src="script.js"></script>
-</body>
-</html>
+</Layout>

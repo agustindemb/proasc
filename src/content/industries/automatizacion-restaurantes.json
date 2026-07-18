@@ -1,0 +1,58 @@
+{
+  "title": "Automatización de Reservas y Pedidos para Restaurantes | proasc",
+  "metaDescription": "Automatiza reservas de mesa, pedidos para llevar y consultas de menú por WhatsApp para tu restaurante. Reduce llamadas y errores en los pedidos.",
+  "serviceType": "Automatización para Restaurantes",
+  "h1": "Automatiza Reservas y Pedidos de tu Restaurante por WhatsApp",
+  "subtitle": "Reservas de mesa 24/7, menús digitales interactivos y confirmación de pedidos para llevar sin ocupar a tu personal.",
+  "intro": "Tu equipo de salón no puede atender el teléfono durante el servicio y responder WhatsApp al mismo tiempo. Diseñamos asistentes automáticos que gestionan reservas de mesa en tiempo real, muestran el menú del día, toman pedidos para llevar y confirman los horarios de retiro o delivery, liberando a tu equipo para concentrarse en la experiencia gastronómica.",
+  "benefits": [
+    {
+      "title": "Reservas de Mesa en Tiempo Real",
+      "description": "El cliente reserva su mesa directamente por WhatsApp, eligiendo fecha, hora y número de comensales con disponibilidad real.",
+      "icon": "fa-solid fa-chair"
+    },
+    {
+      "title": "Menú Digital Interactivo",
+      "description": "El bot muestra el menú del día con fotos y precios, filtra por dietas especiales y responde consultas de ingredientes.",
+      "icon": "fa-solid fa-utensils"
+    },
+    {
+      "title": "Pedidos para Llevar y Delivery",
+      "description": "Los clientes realizan su pedido completo por WhatsApp con confirmación de tiempo estimado y link de pago si lo necesitas.",
+      "icon": "fa-solid fa-bag-shopping"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": 1,
+      "title": "Carga del Menú y Horarios",
+      "description": "Estructuramos tu carta y disponibilidad de mesas en el sistema de forma fácil de actualizar."
+    },
+    {
+      "step": 2,
+      "title": "Flujo de Reservas",
+      "description": "El bot guía al cliente en la elección de fecha, horario y confirma la reserva con un mensaje automático."
+    },
+    {
+      "step": 3,
+      "title": "Gestión de Pedidos",
+      "description": "Los pedidos para llevar se envían directamente a la cocina y se notifica el tiempo estimado al cliente."
+    }
+  ],
+  "cases": [],
+  "faqs": [
+    {
+      "question": "¿Cómo actualizo el menú cuando cambia?",
+      "answer": "Podemos configurar el menú en una hoja de Google Sheets de fácil edición. Cuando actualizas la planilla, el bot refleja los cambios automáticamente en sus respuestas."
+    },
+    {
+      "question": "¿El sistema puede manejar alérgenos y dietas especiales?",
+      "answer": "Sí. Etiquetamos cada plato del menú con sus alérgenos y opciones de dieta (vegano, sin gluten, sin lactosa). El cliente puede filtrar el menú según sus restricciones."
+    },
+    {
+      "question": "¿Qué pasa si el restaurante está lleno y no hay mesas disponibles?",
+      "answer": "El bot informa automáticamente sobre la falta de disponibilidad en el horario solicitado y ofrece alternativas de horario cercanas o agrega al cliente a una lista de espera."
+    }
+  ],
+  "conversionGoal": "whatsapp-cta"
+}

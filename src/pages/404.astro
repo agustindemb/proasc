@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Página No Encontrada (404) | proasc";
+const description = "Lo sentimos, la página que buscas no existe o ha sido movida. Vuelve al inicio para explorar nuestras soluciones.";
+---
+
+<Layout
+  title={title}
+  description={description}
+  seoType="WebPage"
+>
+  <section style="padding-top: 180px; padding-bottom: 8rem; text-align: center;">
+    <div class="container" style="max-width: 600px; display: flex; flex-direction: column; gap: 2rem; align-items: center;">
+      <!-- Big visual indicator -->
+      <div style="position: relative; display: inline-flex; justify-content: center; align-items: center;">
+        <div style="font-size: clamp(6rem, 15vw, 10rem); font-weight: 800; font-family: 'Space Grotesk', sans-serif; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; opacity: 0.85; line-height: 1;">
+          404
+        </div>
+        <div style="position: absolute; font-size: 3rem; color: #fff; transform: rotate(-15deg); top: -20px; right: -20px; opacity: 0.15;">
+          <i class="fa-solid fa-robot"></i>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <h1 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; color: #fff;">¿Te has perdido en el flujo?</h1>
+        <p style="color: var(--text-muted); line-height: 1.6; font-size: 1.05rem;">
+          Lo sentimos, la página que estás buscando no existe, ha sido eliminada o cambió de ruta.
+        </p>
+      </div>
+
+      <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem;">
+        <a href="/" class="btn btn-primary">Volver al Inicio <i class="fa-solid fa-house"></i></a>
+        <a href="/precios" class="btn btn-secondary">Ver Precios <i class="fa-solid fa-tags"></i></a>
+      </div>
+    </div>
+  </section>
+</Layout>

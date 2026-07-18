@@ -1,62 +1,13 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>proasc | Automatizaciones con IA y WhatsApp</title>
-  
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="proasc (Automation System Company) desarrolla sistemas de IA conversacional, canales de venta y soporte por WhatsApp e integraciones personalizadas para automatizar tus flujos de trabajo.">
-  <meta name="keywords" content="automatizacion de whatsapp, chatbots de ia, empresa de sistemas de automatizacion, asc, automatizacion de procesos, crm integracion, inteligencia artificial">
-  <meta name="author" content="ASC">
-  
-  <!-- OpenGraph Meta Tags -->
-  <meta property="og:title" content="proasc | IA Conversacional Inteligente y Automatización de Procesos">
-  <meta property="og:description" content="Olvídate de las tareas manuales repetitivas. proasc diseña flujos personalizados en WhatsApp e integraciones de backend para optimizar tus operaciones 24/7.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://proasc.co">
-  
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- CSS Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+---
+import Layout from '../layouts/Layout.astro';
+---
 
-  <!-- Background Glow & Grid Effects -->
-  <div class="background-layer">
-    <div class="radial-glow-1"></div>
-    <div class="radial-glow-2"></div>
-    <div class="grid-overlay"></div>
-  </div>
-
-  <!-- Header / Navigation -->
-  <header id="main-header">
-    <div class="container nav-container">
-      <a href="#hero" class="logo" id="logo-brand">
-        <img src="logo.jpeg" alt="Logo de ASC Automations" class="logo-img">
-        <span class="logo-text">proasc</span>
-      </a>
-      
-      <ul class="nav-menu" id="navigation-menu">
-        <li><a href="#hero" class="nav-link">Inicio</a></li>
-        <li><a href="#whatsapp-demo" class="nav-link">Demo Chatbot</a></li>
-        <li><a href="#services" class="nav-link">Servicios</a></li>
-        <li><a href="#workflow" class="nav-link">Nuestro Flujo</a></li>
-        <li><a href="#about" class="nav-link">Sobre ASC</a></li>
-        <li><a href="precios.html" class="nav-link">Precios</a></li>
-        <li><a href="#contact" class="nav-link">Contacto</a></li>
-      </ul>
-      
-      <a href="#contact" class="nav-cta" id="nav-cta-btn">Crear Mi Sistema</a>
-      
-      <button class="mobile-nav-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">
-        <i class="fa-solid fa-bars"></i>
-      </button>
-    </div>
-  </header>
-
+<Layout 
+  title="proasc | Automatizaciones con IA y WhatsApp" 
+  description="proasc desarrolla sistemas de IA conversacional, automatización de WhatsApp e integraciones personalizadas para operar tu negocio en piloto automático."
+  seoType="ProfessionalService"
+  conversionGoal="submit-form"
+>
   <!-- Hero Section -->
   <section id="hero">
     <canvas id="neural-particles" class="hero-canvas"></canvas>
@@ -76,7 +27,7 @@
           <a href="#whatsapp-demo" class="btn btn-primary" id="hero-btn-demo">
             Probar Chatbot <i class="fa-solid fa-comments"></i>
           </a>
-          <a href="precios.html" class="btn btn-secondary" id="hero-btn-prices">
+          <a href="/precios" class="btn btn-secondary" id="hero-btn-prices">
             Ver Precios <i class="fa-solid fa-tags"></i>
           </a>
           <a href="#contact" class="btn btn-secondary" id="hero-btn-contact" style="background: transparent; border-color: rgba(255,255,255,0.15);">
@@ -175,7 +126,7 @@
           <div class="wa-header">
             <div class="wa-user">
               <div class="wa-avatar">
-                <img src="logo.jpeg" alt="Logo de ASC">
+                <img src="/logo.jpeg" alt="Logo de ASC" width="40" height="40">
               </div>
               <div class="wa-user-details">
                 <h5>Asistente proasc</h5>
@@ -221,7 +172,7 @@
           
           <div class="wa-footer">
             <input type="text" class="wa-input" placeholder="Elige un botón de arriba..." id="wa-text-input" disabled>
-            <button class="wa-send-btn" id="wa-send-btn-mock">
+            <button class="wa-send-btn" id="wa-send-btn-mock" aria-label="Enviar mensaje">
               <i class="fa-solid fa-paper-plane"></i>
             </button>
           </div>
@@ -240,37 +191,37 @@
       </div>
       
       <div class="services-grid">
-        <!-- Card 1 -->
-        <div class="glass-card service-card reveal" id="service-card-whatsapp">
+        <!-- Card 1: WhatsApp -->
+        <a href="/automatizacion-whatsapp" class="glass-card service-card reveal" id="service-card-whatsapp" style="text-decoration: none; display: block; color: inherit;">
           <div class="service-icon">
             <i class="fa-brands fa-whatsapp"></i>
           </div>
           <h3 class="service-title">Sistemas para WhatsApp</h3>
           <p class="service-desc">Transforma tu línea comercial de WhatsApp en un canal de ventas, atención al cliente y soporte automatizado las 24 horas.</p>
-          <ul class="service-features">
+          <ul class="service-features" style="pointer-events: none;">
             <li><i class="fa-solid fa-check"></i> Árboles lógicos y flujos semánticos</li>
             <li><i class="fa-solid fa-check"></i> Campañas masivas de WhatsApp (API Cloud)</li>
             <li><i class="fa-solid fa-check"></i> Agendamiento de reuniones dentro del chat</li>
             <li><i class="fa-solid fa-check"></i> Generación automática de links de cobro</li>
           </ul>
-        </div>
+        </a>
         
-        <!-- Card 2 -->
-        <div class="glass-card service-card reveal" style="animation-delay: 0.1s;" id="service-card-ai">
+        <!-- Card 2: AI Chatbots -->
+        <a href="/chatbots-ia" class="glass-card service-card reveal" style="animation-delay: 0.1s; text-decoration: none; display: block; color: inherit;" id="service-card-ai">
           <div class="service-icon">
             <i class="fa-solid fa-brain"></i>
           </div>
           <h3 class="service-title">Integraciones de IA Conversacional</h3>
           <p class="service-desc">Aprovecha modelos LLM, bases de datos vectoriales y arquitecturas cognitivas para brindar soporte específico con el contexto de tu empresa.</p>
-          <ul class="service-features">
+          <ul class="service-features" style="pointer-events: none;">
             <li><i class="fa-solid fa-check"></i> Asistentes de IA entrenados con tus documentos</li>
             <li><i class="fa-solid fa-check"></i> Memoria contextual e histórico de chats</li>
             <li><i class="fa-solid fa-check"></i> Extracción de datos y guardado automático</li>
             <li><i class="fa-solid fa-check"></i> Calificación e intenciones de clientes</li>
           </ul>
-        </div>
+        </a>
         
-        <!-- Card 3 -->
+        <!-- Card 3: Backend Workflow -->
         <div class="glass-card service-card reveal" style="animation-delay: 0.2s;" id="service-card-custom">
           <div class="service-icon">
             <i class="fa-solid fa-gears"></i>
@@ -382,8 +333,12 @@
         <span class="section-subtitle">Quiénes Somos</span>
         <h2 class="section-title">Somos ASC (Automation System Company)</h2>
         <p class="section-desc">Operando comercialmente como **proasc**, somos un equipo de ingenieros en sistemas y arquitectos de IA. Nuestro objetivo es directo: erradicar las tareas manuales que absorben el tiempo de tu equipo y dan lugar a errores operativos.</p>
-        <p style="color: var(--text-muted); margin-bottom: 1rem;">Desde flujos sencillos de auto-respuesta en WhatsApp hasta integraciones complejas de API que conectan tus bases de datos heredadas con herramientas en la nube, en ASC estructuramos e instalamos la columna vertebral digital de tu negocio.</p>
-        <a href="#contact" class="btn btn-secondary" id="about-btn-learn">Agendar Consultoría</a>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Desde flujos sencillos de auto-respuesta en WhatsApp hasta integraciones complejas de API que conectan tus bases de datos heredadas con herramientas en la nube, en ASC estructuramos e instalamos la columna vertebral digital de tu negocio.</p>
+        
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+          <a href="/sobre-nosotros" class="btn btn-secondary" id="about-btn-eeat" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">Conoce al Equipo</a>
+          <a href="#contact" class="btn btn-primary" id="about-btn-learn">Agendar Consultoría</a>
+        </div>
       </div>
     </div>
   </section>
@@ -477,64 +432,4 @@
       <p style="font-size: 0.8rem; color: var(--text-muted);">Te enviaremos un WhatsApp en breve.</p>
     </div>
   </div>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="#hero" class="logo" style="margin-bottom: 0.5rem;" id="footer-logo">
-          <img src="logo.jpeg" alt="Logo de ASC Automations" class="logo-img">
-          <span class="logo-text">proasc</span>
-        </a>
-        <p>ASC (Automation System Company) se especializa en asistentes conversacionales de IA, automatización para WhatsApp de empresas e integraciones de backend.</p>
-      </div>
-      
-      <div class="footer-links-col">
-        <h4>Navegación</h4>
-        <ul class="footer-links">
-          <li><a href="#hero">Inicio</a></li>
-          <li><a href="#whatsapp-demo">Demo Chatbot</a></li>
-          <li><a href="#services">Servicios</a></li>
-          <li><a href="#workflow">Nuestro Flujo</a></li>
-          <li><a href="#about">Sobre ASC</a></li>
-          <li><a href="precios.html">Precios y Planes</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-newsletter">
-        <h4>Novedades</h4>
-        <p>Suscríbete para recibir plantillas de automatización y consejos de IA quincenales directamente en tu correo.</p>
-        <form class="newsletter-form" id="subscribe-newsletter-form">
-          <input type="email" class="newsletter-input" placeholder="correo@empresa.com" required id="newsletter-email-input">
-          <button type="submit" class="btn btn-primary btn-newsletter" id="newsletter-submit-btn">
-            Unirse
-          </button>
-        </form>
-      </div>
-    </div>
-    
-    <div class="container footer-bottom">
-      <p>&copy; 2026 ASC (Automation System Company). Todos los derechos reservados.</p>
-      <div class="social-links">
-        <a href="https://linkedin.com" target="_blank" class="social-link" id="social-lnk-linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="https://www.instagram.com/asc.automations/" target="_blank" class="social-link" id="social-lnk-instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://github.com" target="_blank" class="social-link" id="social-lnk-github"><i class="fa-brands fa-github"></i></a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Floating Demo Button -->
-  <a href="demo.html" class="floating-demo-btn" id="btn-floating-demo">
-    <i class="fa-solid fa-wand-magic-sparkles"></i>
-    <span>Tu próxima web</span>
-  </a>
-
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/5491138927598?text=Hola!%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20automatizaciones%20de%20proasc." target="_blank" class="floating-whatsapp-btn" id="btn-floating-whatsapp" aria-label="Chatear por WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
-
-  <!-- Main JavaScript File -->
-  <script src="script.js"></script>
-</body>
-</html>
+</Layout>

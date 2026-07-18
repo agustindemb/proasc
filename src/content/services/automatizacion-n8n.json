@@ -1,0 +1,57 @@
+{
+  "title": "Desarrollo e Implementación de n8n para Empresas | proasc",
+  "metaDescription": "Especialistas en n8n. Diseñamos, alojamos y mantenemos flujos de automatización autohospedados para reducir costes de licencias SaaS.",
+  "serviceType": "Automatización n8n",
+  "h1": "Automatizaciones Flexibles y Económicas con n8n",
+  "subtitle": "Ahorra miles de dólares en suscripciones mensuales. Diseñamos e implementamos flujos complejos sobre n8n.",
+  "intro": "n8n es la alternativa de automatización open-source líder del mercado. Te ayudamos a diseñar, implementar y alojar flujos lógicos personalizados en tu propia infraestructura o en la nube para conectar sistemas, reduciendo drásticamente las tarifas mensuales que exigen plataformas como Zapier o Make.",
+  "benefits": [
+    {
+      "title": "Reducción de Costes",
+      "description": "Automatiza millones de tareas mensuales sin pagar de más por licencias o planes de volumen excesivos.",
+      "icon": "fa-solid fa-hand-holding-dollar"
+    },
+    {
+      "title": "Control Total de Datos",
+      "description": "Aloja n8n en tus propios servidores, garantizando la privacidad de tus clientes y el cumplimiento legal.",
+      "icon": "fa-solid fa-server"
+    },
+    {
+      "title": "Flexibilidad de Código",
+      "description": "Inyecta lógica personalizada en JavaScript o Python directamente dentro de tus flujos lógicos.",
+      "icon": "fa-solid fa-code"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": 1,
+      "title": "Arquitectura y Hosting",
+      "description": "Desplegamos n8n de forma segura en un servidor optimizado en la nube (AWS, DigitalOcean, VPS)."
+    },
+    {
+      "step": 2,
+      "title": "Desarrollo de Workflows",
+      "description": "Diseñamos los nodos de integración, parseo de JSONs y desencadenadores lógicos."
+    },
+    {
+      "step": 3,
+      "title": "Mantenimiento Continuo",
+      "description": "Monitoreamos la ejecución de flujos para asegurar que operen sin interrupciones."
+    }
+  ],
+  "cases": [
+    {
+      "title": "Inmobiliaria Norte",
+      "description": "Estructura del chatbot y guardado de datos operado íntegramente a través de n8n autohospedado.",
+      "result": "Estabilidad del 99.9% y costo de ejecución mensual cercano a cero.",
+      "clientSlug": "caso-inmobiliaria-norte"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "¿n8n es más difícil de mantener que Zapier?",
+      "answer": "n8n autohospedado requiere una configuración técnica inicial y monitoreo del servidor, pero en proasc nos encargamos de toda la administración y mantenimiento mensual para que no tengas que preocuparte."
+    }
+  ],
+  "conversionGoal": "submit-form"
+}
