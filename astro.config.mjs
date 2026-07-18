@@ -3,10 +3,10 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://proasc.co',
+  site: 'https://proasc.com',
   integrations: [
     sitemap({
-      filter: (page) => page !== 'https://proasc.co/404/',
+      filter: (page) => page !== 'https://proasc.com/404/',
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),

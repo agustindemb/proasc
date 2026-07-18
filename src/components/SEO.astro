@@ -19,7 +19,7 @@ const {
   breadcrumbs
 } = Astro.props;
 
-const siteUrl = 'https://proasc.co';
+const siteUrl = 'https://proasc.com';
 const currentUrl = canonicalUrl || `${siteUrl}${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`;
 const defaultOgImage = `${siteUrl}/logo.png`;
 const resolvedOgImage = ogImage ? (ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage.startsWith('/') ? '' : '/'}${ogImage}`) : defaultOgImage;

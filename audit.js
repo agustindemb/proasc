@@ -101,7 +101,7 @@ htmlFiles.forEach(file => {
     const href = canonicalMatch[1].trim();
     if (!href) {
       fileErrors.push('El enlace canonical está vacío.');
-    } else if (!href.startsWith('https://proasc.co')) {
+    } else if (!href.startsWith('https://proasc.com')) {
       fileErrors.push(`El canonical apunta a un dominio incorrecto o no seguro: "${href}".`);
     }
   }
