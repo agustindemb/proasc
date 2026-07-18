@@ -1,12 +1,18 @@
 User-agent: *
 Allow: /
+Disallow: /keystatic/
+Disallow: /api/keystatic/
 
 # Directives for well-known crawlers
 User-agent: Googlebot
 Allow: /
+Disallow: /keystatic/
+Disallow: /api/keystatic/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /keystatic/
+Disallow: /api/keystatic/
 
 # Sitemap location
 Sitemap: https://proasc.com/sitemap-index.xml

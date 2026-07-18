@@ -11,6 +11,7 @@ const blogCollection = defineCollection({
     author: z.string().default('Sistemas ASC'),
     authorLinkedin: z.string().url().optional(),
     image: z.string().optional(),
+    imageAlt: z.string().optional(), // Required in Keystatic UI; optional here for backwards compat with existing .md posts
     category: z.string().optional(),
     tags: z.array(z.string()).default([]),
   })
