@@ -5,7 +5,10 @@ import path from 'path';
 const STATIC_ASSET_EXTENSIONS = ['.css', '.js', '.png', '.jpg', '.jpeg', '.webp', '.svg', '.ico', '.woff', '.woff2', '.ttf', '.pdf', '.xml', '.txt'];
 const isStaticAsset = (href) => STATIC_ASSET_EXTENSIONS.some(ext => href.split('?')[0].endsWith(ext)) || href.startsWith('/_astro/');
 
-const distDir = path.join(process.cwd(), 'dist');
+let distDir = path.join(process.cwd(), 'dist');
+if (fs.existsSync(path.join(distDir, 'client'))) {
+  distDir = path.join(distDir, 'client');
+}
 
 // CLI Colors
 const colors = {
@@ -18,11 +21,11 @@ const colors = {
 };
 
 if (!fs.existsSync(distDir)) {
-  console.error(`${colors.red}${colors.bold}Error: La carpeta /dist no existe. Debes ejecutar "npm run build" primero.${colors.reset}`);
+  console.error(`${colors.red}${colors.bold}Error: La carpeta ${distDir} no existe. Debes ejecutar "npm run build" primero.${colors.reset}`);
   process.exit(1);
 }
 
-console.log(`${colors.cyan}${colors.bold}Iniciando Auditoría SEO en /dist...${colors.reset}\n`);
+console.log(`${colors.cyan}${colors.bold}Iniciando Auditoría SEO en ${distDir}...${colors.reset}\n`);
 
 // Helper to recursively get all HTML files
 function getHtmlFiles(dir, filesList = []) {
