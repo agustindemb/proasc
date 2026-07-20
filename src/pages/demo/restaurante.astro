@@ -1,0 +1,934 @@
+---
+import SEO from '../../components/SEO.astro';
+
+const title = "Aethelgard | Restaurante & Sistema de Reservas - Demo proasc";
+const description = "Demostración interactiva de sitio web para restaurantes con sistema de reservas en línea, menú digital interactivo y confirmación por WhatsApp.";
+const breadcrumbs = [
+  { name: "Inicio", url: "/" },
+  { name: "Demo 3D", url: "/demo" },
+  { name: "Demo Restaurante", url: "/demo/restaurante" }
+];
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon-48x48.png">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- SEO Meta Tags & Schema -->
+  <SEO
+    title={title}
+    description={description}
+    seoType="WebPage"
+    breadcrumbs={breadcrumbs}
+  />
+
+  <style>
+    :root {
+      --bg-dark: #08090c;
+      --bg-card: #101218;
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-glow: rgba(212, 175, 55, 0.25);
+      --accent-red: #e63946;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: rgba(212, 175, 55, 0.15);
+      --font-title: 'Cinzel', serif;
+      --font-body: 'Outfit', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* Top Demo Notice Bar */
+    .proasc-demo-banner {
+      background: linear-gradient(90deg, #030712, #0f172a, #030712);
+      border-bottom: 1px solid rgba(0, 242, 254, 0.2);
+      padding: 0.6rem 1rem;
+      text-align: center;
+      font-size: 0.85rem;
+      position: relative;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .proasc-demo-banner span {
+      color: #94a3b8;
+    }
+
+    .proasc-demo-banner strong {
+      color: #00f2fe;
+    }
+
+    .btn-back-proasc {
+      background: rgba(0, 242, 254, 0.1);
+      color: #00f2fe;
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      padding: 0.25rem 0.8rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.75rem;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .btn-back-proasc:hover {
+      background: #00f2fe;
+      color: #030712;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(8, 9, 12, 0.9);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 1.2rem 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-logo {
+      font-family: var(--font-title);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 3px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-logo span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 2px;
+      display: block;
+      font-family: var(--font-body);
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold) 0%, #b8860b 100%);
+      color: #000;
+      font-weight: 700;
+      padding: 0.75rem 1.6rem;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px var(--gold-glow);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      padding: 8rem 0 6rem;
+      background: linear-gradient(180deg, rgba(8, 9, 12, 0.7) 0%, rgba(8, 9, 12, 0.95) 100%),
+                  url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-subtitle {
+      color: var(--gold);
+      font-family: var(--font-title);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-title);
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #fff;
+      line-height: 1.15;
+    }
+
+    .hero-title span {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero-desc {
+      max-width: 650px;
+      margin: 0 auto 3rem;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    /* Quick Reservation Bar */
+    .reservation-bar {
+      background: rgba(16, 18, 24, 0.9);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(20px);
+      border-radius: 12px;
+      padding: 1.5rem;
+      max-width: 950px;
+      margin: 0 auto;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) auto;
+      gap: 1.2rem;
+      align-items: end;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: left;
+    }
+
+    .form-field label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .form-field input,
+    .form-field select {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .form-field input:focus,
+    .form-field select:focus {
+      border-color: var(--gold);
+    }
+
+    /* Section Styling */
+    section {
+      padding: 6rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-subtitle {
+      color: var(--gold);
+      font-family: var(--font-title);
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: var(--font-title);
+      font-size: 2.4rem;
+      color: #fff;
+    }
+
+    /* Menu Grid */
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .tab-btn.active,
+    .tab-btn:hover {
+      background: var(--gold);
+      color: #000;
+      border-color: var(--gold);
+      font-weight: 700;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .dish-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .dish-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.1);
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+
+    .dish-img {
+      height: 220px;
+      width: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .dish-info {
+      padding: 1.5rem;
+    }
+
+    .dish-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.75rem;
+    }
+
+    .dish-name {
+      font-family: var(--font-title);
+      font-size: 1.25rem;
+      color: #fff;
+    }
+
+    .dish-price {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .dish-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .dish-tag {
+      background: rgba(212, 175, 55, 0.1);
+      color: var(--gold);
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    /* Experience Features Grid */
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .exp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .exp-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin: 0 auto 1.5rem;
+    }
+
+    .exp-title {
+      font-family: var(--font-title);
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Modal Styling for Booking Confirmation */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 1.5rem;
+    }
+
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--gold);
+      border-radius: 16px;
+      max-width: 500px;
+      width: 100%;
+      padding: 2.5rem;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+      position: relative;
+    }
+
+    .modal-icon {
+      width: 70px;
+      height: 70px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1.5rem;
+    }
+
+    .modal-title {
+      font-family: var(--font-title);
+      font-size: 1.6rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-summary {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .modal-summary div {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-summary div:last-child {
+      margin-bottom: 0;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1.2rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Floating WhatsApp Reservation Button */
+    .floating-wa-booking {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.8rem 1.4rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+      z-index: 900;
+      transition: transform 0.3s;
+    }
+
+    .floating-wa-booking:hover {
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Demo Banner -->
+  <div class="proasc-demo-banner">
+    <span>✨ <strong>Demo Interactiva para Clientes:</strong> Ejemplo real de sitio web gastronómico con sistema de reservas.</span>
+    <a href="/demo" class="btn-back-proasc"><i class="fa-solid fa-arrow-left"></i> Volver a Demos proasc</a>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <a href="#" class="brand-logo">
+        AETHELGARD
+        <span>HAUTE CUISINE</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#menu">Menú</a></li>
+        <li><a href="#reservas">Reservas</a></li>
+        <li><a href="#experiencia">Experiencia</a></li>
+        <li><a href="#ubicacion">Contacto</a></li>
+      </ul>
+
+      <a href="#reservas" class="btn-gold"><i class="fa-solid fa-calendar-check"></i> Reservar Mesa</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-subtitle">Alta Gastronomía de Autor</span>
+      <h1 class="hero-title">Donde el Sabor Se Convierte en <span>Arte</span></h1>
+      <p class="hero-desc">
+        Una experiencia sensorial inolvidable. Cocina estacional, maridajes exclusivos y un ambiente diseñado para momentos memorables.
+      </p>
+
+      <!-- Instant Reservation Widget -->
+      <form id="hero-reservation-form" class="reservation-bar">
+        <div class="form-field">
+          <label for="res-date"><i class="fa-regular fa-calendar"></i> Fecha</label>
+
+          <input type="date" id="res-date" required>
+        </div>
+
+        <div class="form-field">
+          <label for="res-time"><i class="fa-regular fa-clock"></i> Hora</label>
+          <select id="res-time" required>
+            <option value="19:30">19:30 hs</option>
+            <option value="20:00">20:00 hs</option>
+            <option value="20:30">20:30 hs</option>
+            <option value="21:00" selected>21:00 hs</option>
+            <option value="21:30">21:30 hs</option>
+            <option value="22:00">22:00 hs</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="res-people"><i class="fa-solid fa-user-group"></i> Comensales</label>
+          <select id="res-people" required>
+            <option value="2 personas">2 Personas (Mesa Dúo)</option>
+            <option value="4 personas" selected>4 Personas (Familia / Amigos)</option>
+            <option value="6 personas">6 Personas (Grupo)</option>
+            <option value="8+ personas">8+ Personas (Evento Privado)</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="res-zone"><i class="fa-solid fa-chair"></i> Ubicación</label>
+          <select id="res-zone">
+            <option value="Salón Principal">Salón Principal</option>
+            <option value="Terraza & Jardín">Terraza & Jardín</option>
+            <option value="Cava Privada">Cava Privada</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-gold"><i class="fa-solid fa-magnifying-glass"></i> Confirmar Mesa</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Interactive Menu Section -->
+  <section id="menu">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Nuestra Carta</span>
+        <h2 class="section-title">Menú de Temporada</h2>
+      </div>
+
+      <div class="menu-tabs">
+        <button class="tab-btn active" data-category="todos">Todos</button>
+        <button class="tab-btn" data-category="entradas">Entradas</button>
+        <button class="tab-btn" data-category="principales">Platos Principales</button>
+        <button class="tab-btn" data-category="postres">Postres</button>
+        <button class="tab-btn" data-category="cocteles">Cócteles de Autor</button>
+      </div>
+
+      <div class="menu-grid">
+        <!-- Dish 1 -->
+        <div class="dish-card" data-cat="principales">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Ojo de Bife Madurado" class="dish-img">
+          <div class="dish-info">
+            <div class="dish-header">
+              <h3 class="dish-name">Ojo de Bife Madurado (45 días)</h3>
+              <span class="dish-price">$28.500</span>
+            </div>
+            <p class="dish-desc">Acompañado de mousseline de papas ahumadas, reducción de malbec orgánico y manteca de hierbas locales.</p>
+            <span class="dish-tag">Recomendado del Chef</span>
+          </div>
+        </div>
+
+        <!-- Dish 2 -->
+        <div class="dish-card" data-cat="principales">
+          <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=800&q=80" alt="Salmón Salteado al Eneldo" class="dish-img">
+          <div class="dish-info">
+            <div class="dish-header">
+              <h3 class="dish-name">Salmón Salvaje con Costra de Hierbas</h3>
+              <span class="dish-price">$26.000</span>
+            </div>
+            <p class="dish-desc">Servido sobre risotto cremoso de azafrán, espárragos grillados y emulsión cítrica de lima.</p>
+            <span class="dish-tag">Gluten Free</span>
+          </div>
+        </div>
+
+        <!-- Dish 3 -->
+        <div class="dish-card" data-cat="entradas">
+          <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=800&q=80" alt="Raviolones Artesanales" class="dish-img">
+          <div class="dish-info">
+            <div class="dish-header">
+              <h3 class="dish-name">Ravioles Abiertos de Hongos Silvestres</h3>
+              <span class="dish-price">$19.800</span>
+            </div>
+            <p class="dish-desc">Masa artesanal con tinta de sepia, trufa negra fresca, espumas de parmesano estacionado y avellanas tostadas.</p>
+            <span class="dish-tag">Vegetariano</span>
+          </div>
+        </div>
+
+        <!-- Dish 4 -->
+        <div class="dish-card" data-cat="cocteles">
+          <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80" alt="Cóctel Smoked Old Fashioned" class="dish-img">
+          <div class="dish-info">
+            <div class="dish-header">
+              <h3 class="dish-name">Smoked Gold Old Fashioned</h3>
+              <span class="dish-price">$9.500</span>
+            </div>
+            <p class="dish-desc">Bourbon de reserva, almíbar artesanal de especias, bitters infusionados e infusión ahumada en madera de roble.</p>
+            <span class="dish-tag">Cóctel de Autor</span>
+          </div>
+        </div>
+
+        <!-- Dish 5 -->
+        <div class="dish-card" data-cat="postres">
+          <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" alt="Nube de Chocolate Valrhona" class="dish-img">
+          <div class="dish-info">
+            <div class="dish-header">
+              <h3 class="dish-name">Texturas de Chocolate 70% & Frutos Rojos</h3>
+              <span class="dish-price">$8.200</span>
+            </div>
+            <p class="dish-desc">Cúpula de chocolate belga, gelée de maracuyá, helado casero de pistachos picados y crocante de praliné.</p>
+            <span class="dish-tag">Postre Especial</span>
+          </div>
+        </div>
+
+        <!-- Dish 6 -->
+        <div class="dish-card" data-cat="entradas">
+          <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80" alt="Burrata de Búfala" class="dish-img">
+          <div class="dish-info">
+            <div class="dish-header">
+              <h3 class="dish-name">Burrata de Búfala & Higos Asados</h3>
+              <span class="dish-price">$16.500</span>
+            </div>
+            <p class="dish-desc">Con pesto de albahaca fresca, reducción de aceto balsámico envejecido 10 años y jamón serrano crocante.</p>
+            <span class="dish-tag">Entrada Gourmet</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservation Section -->
+  <section id="reservas" style="background: rgba(16, 18, 24, 0.6); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container" style="max-width: 800px; text-align: center;">
+      <div class="section-header">
+        <span class="section-subtitle">Garantizá Tu Experiencia</span>
+        <h2 class="section-title">Reserva de Mesa en Línea</h2>
+        <p style="color: var(--text-muted); margin-top: 1rem;">Confirmación instantánea con notificación por WhatsApp y recordatorio automatizado.</p>
+      </div>
+
+      <form id="full-reservation-form" style="background: var(--bg-card); border: 1px solid var(--border); padding: 2.5rem; border-radius: 16px; text-align: left; display: grid; gap: 1.5rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+          <div class="form-field">
+            <label for="f-name">Nombre y Apellido</label>
+            <input type="text" id="f-name" placeholder="Ej: Maria Gonzalez" required>
+          </div>
+          <div class="form-field">
+            <label for="f-phone">WhatsApp (para confirmación)</label>
+            <input type="tel" id="f-phone" placeholder="+54 9 11 1234 5678" required>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem;">
+          <div class="form-field">
+            <label for="f-date">Fecha de Reserva</label>
+            <input type="date" id="f-date" required>
+          </div>
+          <div class="form-field">
+            <label for="f-time">Turno / Hora</label>
+            <select id="f-time" required>
+              <option value="19:30">19:30 hs</option>
+              <option value="20:00">20:00 hs</option>
+              <option value="20:30">20:30 hs</option>
+              <option value="21:00" selected>21:00 hs</option>
+              <option value="21:30">21:30 hs</option>
+              <option value="22:00">22:00 hs</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="f-people">Comensales</label>
+            <select id="f-people" required>
+              <option value="2 personas">2 Personas</option>
+              <option value="4 personas" selected>4 Personas</option>
+              <option value="6 personas">6 Personas</option>
+              <option value="8+ personas">8+ Personas</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="f-notes">Alergias / Preferencias Especiales (Opcional)</label>
+          <input type="text" id="f-notes" placeholder="Ej: Aniversario de bodas, preferencia por mesa cerca de la ventana...">
+        </div>
+
+        <button type="submit" class="btn-gold" style="width: 100%; justify-content: center; padding: 1rem; font-size: 1rem;">
+          <i class="fa-solid fa-check-circle"></i> Confirmar y Reservar Mesa Ahora
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Experience Features -->
+  <section id="experiencia">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Excelencia Gastronómica</span>
+        <h2 class="section-title">La Experiencia Aethelgard</h2>
+      </div>
+
+      <div class="experience-grid">
+        <div class="exp-card">
+          <div class="exp-icon"><i class="fa-solid fa-wine-glass-empty"></i></div>
+          <h3 class="exp-title">Sommelier en Vivo</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Cava seleccionada de más de 400 etiquetas nacionales e internacionales maridadas a medida.</p>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <h3 class="exp-title">Reservas Automatizadas</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">El sistema gestiona la disponibilidad en tiempo real y notifica inmediatamente por WhatsApp.</p>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-icon"><i class="fa-solid fa-award"></i></div>
+          <h3 class="exp-title">Premio Gastronómico 2025</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Reconocido entre las mejores propuestas culinarias de autor y atención de excelencia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p style="margin-bottom: 1rem;">&copy; {new Date().getFullYear()} Aethelgard Haute Cuisine. Todos los derechos reservados.</p>
+      <p style="font-size: 0.8rem; color: #64748b;">
+        Sitio de demostración desarrollado por <a href="https://proasc.com" style="color: #00f2fe; text-decoration: none; font-weight: 600;">proasc (Automation System Company)</a>. Sistemas de reservas web & automatización por WhatsApp.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Booking Assistant -->
+  <a href="https://wa.me/5491138927598?text=Hola!%20Me%20gustar%C3%ADa%20reservar%20una%20mesa%20en%20Aethelgard%20para%20esta%20noche." target="_blank" class="floating-wa-booking">
+    <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i>
+    <span>Reservar por WhatsApp</span>
+  </a>
+
+  <!-- Reservation Confirmation Modal -->
+  <div class="modal-backdrop" id="booking-modal">
+    <div class="modal-box">
+      <button class="close-btn" id="modal-close">&times;</button>
+      <div class="modal-icon"><i class="fa-solid fa-check"></i></div>
+      <h3 class="modal-title">¡Reserva Confirmada!</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">Tu mesa ha sido reservada con éxito. Hemos enviado el comprobante a tu WhatsApp.</p>
+
+      <div class="modal-summary">
+        <div><span>Restaurante:</span> <strong>Aethelgard</strong></div>
+        <div><span>Cliente:</span> <strong id="m-name">-</strong></div>
+        <div><span>Fecha y Hora:</span> <strong id="m-datetime">-</strong></div>
+        <div><span>Comensales:</span> <strong id="m-people">-</strong></div>
+        <div><span>Código Reserva:</span> <strong style="color: var(--gold);" id="m-code">#ATH-8921</strong></div>
+      </div>
+
+      <button class="btn-gold" id="modal-ok-btn" style="width: 100%; justify-content: center;">Aceptar y Volver</button>
+    </div>
+  </div>
+
+  <script is:inline>
+    // Set default date to today
+    const dateInputs = document.querySelectorAll('input[type="date"]');
+    const today = new Date().toISOString().split('T')[0];
+    dateInputs.forEach(inp => inp.value = today);
+
+    // Menu category filter
+    const tabs = document.querySelectorAll('.tab-btn');
+    const dishes = document.querySelectorAll('.dish-card');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const cat = tab.dataset.category;
+        dishes.forEach(dish => {
+          if (cat === 'todos' || dish.dataset.cat === cat) {
+            dish.style.display = 'block';
+          } else {
+            dish.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Handle Reservation Form Submissions
+    const modal = document.getElementById('booking-modal');
+    const modalClose = document.getElementById('modal-close');
+    const modalOk = document.getElementById('modal-ok-btn');
+
+    function showConfirmation(name, date, time, people) {
+      document.getElementById('m-name').textContent = name || 'Cliente';
+      document.getElementById('m-datetime').textContent = `${date} a las ${time} hs`;
+      document.getElementById('m-people').textContent = people;
+      document.getElementById('m-code').textContent = '#ATH-' + Math.floor(1000 + Math.random() * 9000);
+      modal.classList.add('active');
+    }
+
+    document.getElementById('hero-reservation-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const date = document.getElementById('res-date').value;
+      const time = document.getElementById('res-time').value;
+      const people = document.getElementById('res-people').value;
+      showConfirmation('Cliente Gastronómico', date, time, people);
+    });
+
+    document.getElementById('full-reservation-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('f-name').value;
+      const date = document.getElementById('f-date').value;
+      const time = document.getElementById('f-time').value;
+      const people = document.getElementById('f-people').value;
+      showConfirmation(name, date, time, people);
+    });
+
+    [modalClose, modalOk].forEach(btn => {
+      btn?.addEventListener('click', () => modal.classList.remove('active'));
+    });
+  </script>
+</body>
+</html>

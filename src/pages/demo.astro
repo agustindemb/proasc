@@ -531,7 +531,10 @@ const breadcrumbs = [
       <i class="fa-solid fa-arrow-left"></i>
       <span>proasc</span>
     </a>
-    <a href="/" class="btn-back-main">Volver</a>
+    <div style="display: flex; gap: 1rem; align-items: center;">
+      <a href="/demo/restaurante" class="btn-back-main" style="border-color: rgba(212, 175, 55, 0.5); color: #d4af37;"><i class="fa-solid fa-utensils"></i> Demo Restaurante</a>
+      <a href="/" class="btn-back-main">Volver</a>
+    </div>
   </header>
 
   <!-- Main Showcase Content -->
@@ -542,6 +545,11 @@ const breadcrumbs = [
       <p class="hero-desc">
         Fusionamos un diseño visual inmersivo de vanguardia con un rendimiento ultrarrápido y libre de dependencias. Atrae clientes con experiencias interactivas memorables.
       </p>
+      <a href="/demo/restaurante" style="text-decoration: none; background: rgba(0, 242, 254, 0.08); border: 1px solid var(--primary); color: #fff; padding: 0.8rem 1.8rem; border-radius: 50px; font-weight: 700; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.75rem; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);">
+        <i class="fa-solid fa-utensils" style="color: var(--primary);"></i>
+        <span>Ver Demo de Cliente: Restaurante & Reservas en Línea</span>
+        <i class="fa-solid fa-arrow-right" style="font-size: 0.85rem; color: var(--primary);"></i>
+      </a>
     </div>
 
     <!-- 3D Tilt Cards Section -->
@@ -598,10 +606,16 @@ const breadcrumbs = [
 
     <!-- CTA Section -->
     <div class="cta-container">
-      <a href="/#contact" class="btn-cta">
-        <span>Quiero una Web como esta</span>
-        <i class="fa-solid fa-arrow-right"></i>
-      </a>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; align-items: center;">
+        <a href="/#contact" class="btn-cta">
+          <span>Quiero una Web como esta</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <a href="/demo/restaurante" class="btn-cta" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212, 175, 55, 0.5); color: #fff; box-shadow: none;">
+          <i class="fa-solid fa-utensils" style="color: #d4af37;"></i>
+          <span>Ver Demo Cliente: Restaurante</span>
+        </a>
+      </div>
       <span class="cta-note">¿Quieres ver más planes? Consulta nuestra sección de <a href="/precios">Precios</a>.</span>
     </div>
   </main>
