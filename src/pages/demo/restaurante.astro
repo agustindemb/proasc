@@ -576,6 +576,60 @@ const breadcrumbs = [
       color: var(--text-muted);
       font-size: 0.85rem;
     }
+
+    /* Mobile Header Navigation Responsive */
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--gold);
+      font-size: 1.2rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    @media (max-width: 868px) {
+      .brand-logo {
+        font-size: 1.15rem;
+        letter-spacing: 1.5px;
+      }
+
+      .brand-logo span {
+        display: none;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(16, 18, 24, 0.98);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.25rem;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+      }
+
+      .btn-gold-nav {
+        padding: 0.5rem 0.9rem;
+        font-size: 0.75rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -594,14 +648,19 @@ const breadcrumbs = [
         <span>HAUTE CUISINE</span>
       </a>
 
-      <ul class="nav-links">
+      <ul class="nav-links" id="restaurante-nav-menu">
         <li><a href="#menu">Menú</a></li>
         <li><a href="#reservas">Reservas</a></li>
         <li><a href="#experiencia">Experiencia</a></li>
         <li><a href="#ubicacion">Contacto</a></li>
       </ul>
 
-      <a href="#reservas" class="btn-gold"><i class="fa-solid fa-calendar-check"></i> Reservar Mesa</a>
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <a href="#reservas" class="btn-gold btn-gold-nav"><i class="fa-solid fa-calendar-check"></i> Reservar</a>
+        <button class="mobile-menu-btn" id="restaurante-toggle-btn" aria-label="Abrir Menú">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -941,6 +1000,29 @@ const breadcrumbs = [
     [modalClose, modalOk].forEach(btn => {
       btn?.addEventListener('click', () => modal.classList.remove('active'));
     });
+
+    // Mobile Hamburger Menu Toggle
+    const rToggleBtn = document.getElementById('restaurante-toggle-btn');
+    const rNavMenu = document.getElementById('restaurante-nav-menu');
+    if (rToggleBtn && rNavMenu) {
+      rToggleBtn.addEventListener('click', () => {
+        rNavMenu.classList.toggle('active');
+        const icon = rToggleBtn.querySelector('i');
+        if (rNavMenu.classList.contains('active')) {
+          icon.className = 'fa-solid fa-xmark';
+        } else {
+          icon.className = 'fa-solid fa-bars';
+        }
+      });
+
+      rNavMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          rNavMenu.classList.remove('active');
+          const icon = rToggleBtn.querySelector('i');
+          if (icon) icon.className = 'fa-solid fa-bars';
+        });
+      });
+    }
   </script>
 </body>
 </html>
