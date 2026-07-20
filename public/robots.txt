@@ -14,5 +14,6 @@ Allow: /
 Disallow: /keystatic/
 Disallow: /api/keystatic/
 
-# Sitemap location
+# Sitemap location (Astro generates sitemap-index.xml; /sitemap.xml redirects to it)
 Sitemap: https://proasc.com/sitemap-index.xml
+Sitemap: https://proasc.com/sitemap-0.xml
