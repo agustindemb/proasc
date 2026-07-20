@@ -47,6 +47,10 @@ const breadcrumbs = [
       --font-body: 'Outfit', sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -286,9 +290,17 @@ const breadcrumbs = [
       border-color: var(--gold);
     }
 
+    .form-field select option,
+    select option {
+      background-color: #101218 !important;
+      color: #ffffff !important;
+      padding: 10px;
+    }
+
     /* Section Styling */
     section {
       padding: 6rem 0;
+      scroll-margin-top: 85px;
     }
 
     .section-header {
