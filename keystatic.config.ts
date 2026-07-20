@@ -82,20 +82,18 @@ export default config({
           }
         ),
 
-        // Featured image — required for OG/SEO
+        // Featured image — optional
         image: fields.image({
-          label: 'Imagen destacada',
-          description: 'Requerida. Usada en redes sociales y encabezado del artículo.',
+          label: 'Imagen destacada (Cover)',
+          description: 'Usada en redes sociales y encabezado del artículo. Opcional.',
           directory: 'public/images/blog',
           publicPath: '/images/blog/',
-          validation: { isRequired: true },
         }),
 
-        // Image alt text — required for accessibility and SEO
+        // Image alt text — optional
         imageAlt: fields.text({
           label: 'Texto alternativo de la imagen (alt)',
-          description: 'Describe la imagen para lectores de pantalla y SEO. Requerido.',
-          validation: { isRequired: true },
+          description: 'Describe la imagen para lectores de pantalla y SEO.',
         }),
 
         // Main content — required
