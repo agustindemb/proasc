@@ -39,8 +39,11 @@ const {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
   
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- FontAwesome Icons (non-blocking) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </noscript>
   
   <!-- Favicon (48px multiples for Googlebot & High-DPI screens) -->
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
@@ -60,22 +63,34 @@ const {
     breadcrumbs={breadcrumbs}
   />
 
-  <!-- Global Site Tag (gtag.js) - Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" is:inline></script>
+  <!-- Defer-loaded Analytics to optimize mobile performance (FCP/LCP) -->
   <script is:inline>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });
-  </script>
+    window.addEventListener('load', () => {
+      // Delay analytics load by 3 seconds to let main thread finish rendering hero
+      setTimeout(() => {
+        const gaId = 'G-XXXXXXXXXX';
+        if (gaId && gaId !== 'G-XXXXXXXXXX') {
+          const gaScript = document.createElement('script');
+          gaScript.async = true;
+          gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+          document.head.appendChild(gaScript);
 
-  <!-- Microsoft Clarity -->
-  <script type="text/javascript" is:inline>
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "xxxxxxxxxx");
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', gaId, { 'anonymize_ip': true });
+        }
+
+        const clarityId = 'xxxxxxxxxx';
+        if (clarityId && clarityId !== 'xxxxxxxxxx') {
+          (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", clarityId);
+        }
+      }, 3000);
+    });
   </script>
 </head>
 <body data-conversion-goal={conversionGoal}>

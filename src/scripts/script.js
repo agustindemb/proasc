@@ -34,6 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 2. Hero Neural Canvas Particle System ---
   const canvas = document.getElementById('neural-particles');
   if (canvas) {
+    // Disable canvas system on mobile screens (< 768px) to optimize CPU/Battery
+    if (window.innerWidth < 768) {
+      canvas.style.display = 'none';
+      return;
+    }
     const ctx = canvas.getContext('2d');
     let particlesArray = [];
     let width = (canvas.width = window.innerWidth);
