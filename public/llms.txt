@@ -1,0 +1,27 @@
+# ProASC - Automation System Company
+
+> https://proasc.com
+
+ProASC es una consultora y agencia B2B que diseña, desarrolla e implementa sistemas de Inteligencia Artificial conversacional (LLMs), integraciones oficiales de WhatsApp Business API, agentes autónomos y automatizaciones avanzadas de procesos de backend (CRM, ERP, bases de datos y APIs) para operar negocios en piloto automático.
+
+## Servicios Clave
+- [WhatsApp Business API](https://proasc.com/automatizacion-whatsapp) - Implementación de API Cloud oficial y desarrollo de flujos interactivos para captación y ventas.
+- [Chatbots con IA](https://proasc.com/chatbots-ia) - Asistentes de IA inteligentes entrenados con bases de conocimientos corporativas para soporte técnico y atención.
+- [Agentes de IA](https://proasc.com/agentes-ia) - Modelos cognitivos autónomos integrados en workflows operativos complejos y toma de decisiones.
+- [Automatización de Procesos](https://proasc.com/automatizacion-procesos) - Sustitución de tareas manuales repetitivas mediante integraciones robustas de backend.
+- [Integración CRM](https://proasc.com/automatizacion-crm) - Conexión bidireccional y actualización automática de prospectos con HubSpot, Salesforce, Pipedrive y otros CRMs.
+- [Consultoría n8n](https://proasc.com/automatizacion-n8n) - Desarrollo experto de flujos de trabajo, webhooks y automatización de datos en n8n.
+
+## Soluciones por Industria
+- [Inmobiliarias](https://proasc.com/automatizacion-inmobiliarias) - Filtrado de consultas procedentes de portales inmobiliarios y respuestas automáticas 24/7.
+- [Estudios Contables](https://proasc.com/automatizacion-estudios-contables) - Envío automático de facturas, recordatorios de vencimiento de impuestos y carga automatizada de datos fiscales.
+- [Clínicas y Salud](https://proasc.com/automatizacion-clinicas) - Gestión autónoma de turnos médicos, confirmación, cancelación y recordatorios por WhatsApp.
+- [E-commerce](https://proasc.com/automatizacion-ecommerce) - Flujos interactivos para recuperar carritos abandonados e integraciones logísticas post-venta.
+- [Restaurantes](https://proasc.com/automatizacion-restaurantes) - Recepción de reservas, asignación de mesas y envío del menú digital de manera automática.
+
+## Recursos de la Compañía
+- [Sobre Nosotros](https://proasc.com/sobre-nosotros) - Misión, equipo y experiencia de ProASC en ingeniería de automatización (EEAT).
+- [Tarifas y Planes](https://proasc.com/precios) - Detalle de los costos de setup, mantenimiento mensual y listado de servicios extras.
+- [Blog de Automatización](https://proasc.com/blog) - Guías prácticas, artículos educativos y novedades tecnológicas de Inteligencia Artificial.
+- [Caso de Éxito: Inmobiliaria Norte](https://proasc.com/casos/caso-inmobiliaria-norte) - Análisis de reducción de costos y tiempos de respuesta con asistentes conversacionales.
+- [Demo 3D Interactiva](https://proasc.com/demo) - Experiencia visual 3D interactiva que demuestra capacidades de diseño web.
