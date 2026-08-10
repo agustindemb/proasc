@@ -552,20 +552,40 @@ const breadcrumbs = [
       background: linear-gradient(135deg, #25D366, #128C7E);
       color: #fff;
       text-decoration: none;
-      padding: 0.8rem 1.4rem;
+      padding: 0.7rem 1.25rem;
       border-radius: 50px;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+      gap: 0.5rem;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
       z-index: 900;
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .floating-wa-booking:hover {
       transform: scale(1.05);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
+    }
+
+    @media (max-width: 768px) {
+      .floating-wa-booking {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        border-radius: 50%;
+        justify-content: center;
+        box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
+      }
+      .floating-wa-booking span {
+        display: none;
+      }
+      .floating-wa-booking i {
+        font-size: 1.4rem !important;
+      }
     }
 
     /* Footer */
@@ -696,10 +716,10 @@ const breadcrumbs = [
         <div class="form-field">
           <label for="res-people"><i class="fa-solid fa-user-group"></i> Comensales</label>
           <select id="res-people" required>
-            <option value="2 personas">2 Personas (Mesa Dúo)</option>
-            <option value="4 personas" selected>4 Personas (Familia / Amigos)</option>
-            <option value="6 personas">6 Personas (Grupo)</option>
-            <option value="8+ personas">8+ Personas (Evento Privado)</option>
+            <option value="2 personas">2 Personas</option>
+            <option value="4 personas" selected>4 Personas</option>
+            <option value="6 personas">6 Personas</option>
+            <option value="8+ personas">8+ Personas</option>
           </select>
         </div>
 
